@@ -12,3 +12,14 @@ body {
 }
 
 /*********************************************************/
+
+.item-single {
+    background: #fff !important;
+    text-align: center !important;
+}
+
+.item-title {
+    color: #333 !important;
+}
+
+/*********************************************************/
