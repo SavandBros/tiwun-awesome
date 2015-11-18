@@ -9,6 +9,7 @@
     angular.module('tiwunAwesome.konfig.Konfig', []);
 
     angular.module('tiwunAwesome', [
+        'ngMaterial',
         'ui.router',
         'angular.filter',
         'markdown',
