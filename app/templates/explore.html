@@ -1,15 +1,15 @@
 <div ng-controller="IndexController">
-    
-  <md-grid-list
-        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
-        md-row-height-gt-md="1:1" md-row-height="2:2"
-        md-gutter="40px" md-gutter-gt-sm="20px" >
 
-    <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" style='background: #ddd' ng-repeat='i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]'>
+  <md-grid-list
+        md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+        md-row-height="2:2"
+        md-gutter="10px" md-gutter-gt-sm="20px">
+
+    <md-grid-tile style='background: {{ i}}' ng-repeat='i in ["crimson", "deeppink", "yellow", "brown", "gold", "lime", "blue", "violet", "cyan", "tomato", "magenta", "orange"]'>
 
       <md-grid-tile-footer>
 
-        <h3>Title here yo</h3>
+        <h3>I'm a tile with color {{i}}</h3>
 
       </md-grid-tile-footer>
 
