@@ -20,3 +20,16 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
+
+/*********************************************************/
+
+body {
+    background: #eee;
+}
+
+/*********************************************************/
+
+.main-container {
+    background: #eee;
+}
+
