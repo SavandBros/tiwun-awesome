@@ -2,113 +2,115 @@
  * Konfig
  * @namespace tiwunAwesome.konfig
  */
-(function() {
-    'use strict';
+'use strict';
 
-    angular.module('tiwunAwesome.konfig.Konfig')
-        .config(Konfig);
+function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $locationProvider.html5Mode(true);
+    //$locationProvider.hashPrefix('!');
 
-    Konfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
+    $httpProvider.interceptors.push('AuthenticationInterceptorService');
 
-    function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-        $locationProvider.html5Mode(true);
-        //$locationProvider.hashPrefix('!');
+    $stateProvider
+        .state('app', {
+            abstract: true,
+            controller: 'MenuController',
+            templateUrl: 'templates/layout.html'
+        })
+        .state('app.explore', {
+            url: '/',
+            views: {
+                'content': {
+                    controller: 'IndexController',
+                    templateUrl: 'templates/explore.html'
+                }
+            }
+        })
+        .state('app.search', {
+            url: '/search',
+            views: {
+                'content': {
+                    controller: 'SearchController',
+                    templateUrl: 'templates/search/search.html'
+                }
+            }
+        })
+        .state('app.register', {
+            url: '/account/register',
+            views: {
+                'content': {
+                    templateUrl: 'templates/account/register.html',
+                    controller: 'RegisterController'
+                }
+            }
+        })
+        .state('app.login', {
+            url: '/account/login/',
+            views: {
+                'content': {
+                    controller: 'LoginController',
+                    templateUrl: 'templates/account/login.html'
+                }
+            }
+        })
+        .state('app.userProfile', {
+            url: '/account/user-profile/:userId/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/account/user_profile.html',
+                    controller: 'UserProfileController'
+                }
+            }
+        })
+        .state('app.userSettings', {
+            url: '/account/user-profile/settings/:userId/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/account/user_settings.html',
+                    controller: 'UserSettingsController'
+                }
+            }
+        })
+        .state('app.newItem', {
+            url: '/items/new/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/item/item_post.html',
+                    controller: 'NewItemController'
+                }
+            }
+        })
+        .state('app.singleItem', {
+            url: '/items/:itemId/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/item/single_item.html',
+                    controller: 'SingleItemController'
+                }
+            }
+        })
+        .state('app.tagList', {
+            url: '/tags/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/tagool/tag_list.html',
+                    controller: 'TagsController'
+                }
+            }
+        })
+        .state('app.tagDetail', {
+            url: '/tags/:tagSlug/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/tagool/tag_detail.html',
+                    controller: 'TagsDetailController'
+                }
+            }
+        });
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/');
+}
 
-        $httpProvider.interceptors.push('AuthenticationInterceptorService');
+angular.module('tiwunAwesome.konfig.Konfig')
+    .config(Konfig);
 
-        $stateProvider
-            .state('root', {
-                url: '/',
-                templateUrl: 'templates/index.html'
-                //views: {
-                //    'menuContent': {
-                //        controller: 'IndexController',
-                //        templateUrl: 'templates/explore.html'
-                //    }
-                //}
-            });
-            //.state('app.search', {
-            //    url: '/search',
-            //    views: {
-            //        'menuContent': {
-            //            controller: 'SearchController',
-            //            templateUrl: 'templates/search/search.html'
-            //        }
-            //    }
-            //})
-            //.state('app.register', {
-            //    url: '/account/register',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/account/register.html',
-            //            controller: 'RegisterController'
-            //        }
-            //    }
-            //})
-            //.state('app.login', {
-            //    url: '/account/login',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/account/login.html',
-            //            controller: 'LoginController'
-            //        }
-            //    }
-            //})
-            //.state('app.userProfile', {
-            //    url: '/account/user-profile/:userId/',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/account/user_profile.html',
-            //            controller: 'UserProfileController'
-            //        }
-            //    }
-            //})
-            //.state('app.userSettings', {
-            //    url: '/account/user-profile/settings/:userId/',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/account/user_settings.html',
-            //            controller: 'UserSettingsController'
-            //        }
-            //    }
-            //})
-            //.state('app.newItem', {
-            //    url: '/items/new/',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/item/item_post.html',
-            //            controller: 'NewItemController'
-            //        }
-            //    }
-            //})
-            //.state('app.singleItem', {
-            //    url: '/items/:itemId/',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/item/single_item.html',
-            //            controller: 'SingleItemController'
-            //        }
-            //    }
-            //})
-            //.state('app.tagList', {
-            //    url: '/tags/',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/tagool/tag_list.html',
-            //            controller: 'TagsController'
-            //        }
-            //    }
-            //})
-            //.state('app.tagDetail', {
-            //    url: '/tags/:tagSlug/',
-            //    views: {
-            //        'menuContent': {
-            //            templateUrl: 'templates/tagool/tag_detail.html',
-            //            controller: 'TagsDetailController'
-            //        }
-            //    }
-            //});
-        // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/');
-    }
-})();
+Konfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];

@@ -1,0 +1,14 @@
+<div ng-controller="IndexController" ng-cloak>
+    <md-content>
+        <md-list>
+            <md-subheader class="md-no-sticky">Items</md-subheader>
+            <md-list-item class="md-2-line" ng-repeat="item in items">
+                <img ng-src="{{ item.get_primary_image.thumbnail }}" class="md-avatar" alt="{{ item.title }}" />
+                <div class="md-list-item-text">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>
