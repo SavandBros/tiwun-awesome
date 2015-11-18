@@ -29,7 +29,6 @@ module.exports = function(config) {
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-messages/angular-messages.js',
       'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
       'bower_components/angular-filter/dist/angular-filter.min.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
@@ -38,6 +37,8 @@ module.exports = function(config) {
       'bower_components/angular-markdown-filter/markdown.js',
       'bower_components/angular-gettext/dist/angular-gettext.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-aria/angular-aria.js',
+      'bower_components/angular-material/angular-material.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
