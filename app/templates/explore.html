@@ -1,14 +1,20 @@
-<div ng-controller="IndexController" ng-cloak>
-    <md-content>
-        <md-list>
-            <md-subheader class="md-no-sticky">Items</md-subheader>
-            <md-list-item class="md-2-line" ng-repeat="item in items">
-                <img ng-src="{{ item.get_primary_image.thumbnail }}" class="md-avatar" alt="{{ item.title }}" />
-                <div class="md-list-item-text">
-                    <h3>{{ item.title }}</h3>
-                    <p>{{ item.description }}</p>
-                </div>
-            </md-list-item>
-        </md-list>
-    </md-content>
+<div ng-controller="IndexController">
+    
+  <md-grid-list
+        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+        md-row-height-gt-md="1:1" md-row-height="2:2"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+
+    <md-grid-tile class="green" md-rowspan="3" md-colspan="2" md-colspan-sm="1">
+
+      <md-grid-tile-footer>
+
+        <h3>Title here yo</h3>
+
+      </md-grid-tile-footer>
+
+    </md-grid-tile>
+
+  </md-grid-list>
+
 </div>

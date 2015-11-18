@@ -1,88 +1,86 @@
 <!doctype html>
 <html>
-<head>
-    <base href="/">
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-</head>
-<body ng-app="tiwunAwesome">
-<div ui-view></div>
-
-
-<!-- build:js(.) scripts/vendor.js -->
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-messages/angular-messages.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-touch/angular-touch.js"></script>
-<script src="bower_components/angular-mass-autocomplete/massautocomplete.min.js"></script>
-<script src="bower_components/showdown/src/showdown.js"></script>
-<script src="bower_components/angular-markdown-filter/markdown.js"></script>
-<script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="bower_components/angular-aria/angular-aria.js"></script>
-<script src="bower_components/angular-material/angular-material.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
-
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/app.js"></script>
-<script src="scripts/konfig.js"></script>
-<script src="scripts/configuration.js"></script>
-<script src="scripts/account/account.js"></script>
-<script src="scripts/account/services/authentication_service.js"></script>
-<script src="scripts/account/services/user_service.js"></script>
-<script src="scripts/account/services/authentication_interceptor_service.js"></script>
-<script src="scripts/account/controllers/login_controller.js"></script>
-<script src="scripts/account/controllers/register_controller.js"></script>
-<script src="scripts/account/controllers/user_profile_controller.js"></script>
-<script src="scripts/account/controllers/user_settings_controller.js"></script>
-<script src="scripts/analytics/analytics.js"></script>
-<script src="scripts/analytics/factories/search_item_factory.js"></script>
-<script src="scripts/item/item.js"></script>
-<script src="scripts/item/services/item_service.js"></script>
-<script src="scripts/item/controllers/items_controller.js"></script>
-<script src="scripts/item/controllers/new_item_controller.js"></script>
-<script src="scripts/item/controllers/single_item_controller.js"></script>
-<script src="scripts/item/directives/item_directive.js"></script>
-<script src="scripts/basement/basement.js"></script>
-<script src="scripts/basement/services/toast_service.js"></script>
-<script src="scripts/basement/services/money_currency_service.js"></script>
-<script src="scripts/basement/factories/log_analytics_factory.js"></script>
-<script src="scripts/basement/providers/analytics_provider.js"></script>
-<script src="scripts/basement/controllers/navbar_controller.js"></script>
-<script src="scripts/basement/controllers/index_controller.js"></script>
-<script src="scripts/basement/controllers/menu_controller.js"></script>
-<script src="scripts/basement/filters/timesince.js"></script>
-<script src="scripts/basement/translations.js"></script>
-<script src="scripts/search/search.js"></script>
-<script src="scripts/search/services/search_service.js"></script>
-<script src="scripts/search/controllers/search_controller.js"></script>
-<script src="scripts/sushial/sushial.js"></script>
-<script src="scripts/sushial/services/comment_service.js"></script>
-<script src="scripts/sushial/services/vote_service.js"></script>
-<script src="scripts/tagool/tagool.js"></script>
-<script src="scripts/tagool/services/tag_service.js"></script>
-<script src="scripts/tagool/controllers/tags_controller.js"></script>
-<script src="scripts/tagool/controllers/tags_detail_controller.js"></script>
-<!-- endbuild -->
-</body>
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    
+    <body ng-app="tiwunAwesome">
+        <div ui-view></div>
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-mass-autocomplete/massautocomplete.min.js"></script>
+        <script src="bower_components/showdown/src/showdown.js"></script>
+        <script src="bower_components/angular-markdown-filter/markdown.js"></script>
+        <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/konfig.js"></script>
+        <script src="scripts/configuration.js"></script>
+        <script src="scripts/account/account.js"></script>
+        <script src="scripts/account/services/authentication_service.js"></script>
+        <script src="scripts/account/services/user_service.js"></script>
+        <script src="scripts/account/services/authentication_interceptor_service.js"></script>
+        <script src="scripts/account/controllers/login_controller.js"></script>
+        <script src="scripts/account/controllers/register_controller.js"></script>
+        <script src="scripts/account/controllers/user_profile_controller.js"></script>
+        <script src="scripts/account/controllers/user_settings_controller.js"></script>
+        <script src="scripts/analytics/analytics.js"></script>
+        <script src="scripts/analytics/factories/search_item_factory.js"></script>
+        <script src="scripts/item/item.js"></script>
+        <script src="scripts/item/services/item_service.js"></script>
+        <script src="scripts/item/controllers/items_controller.js"></script>
+        <script src="scripts/item/controllers/new_item_controller.js"></script>
+        <script src="scripts/item/controllers/single_item_controller.js"></script>
+        <script src="scripts/item/directives/item_directive.js"></script>
+        <script src="scripts/basement/basement.js"></script>
+        <script src="scripts/basement/services/toast_service.js"></script>
+        <script src="scripts/basement/services/money_currency_service.js"></script>
+        <script src="scripts/basement/factories/log_analytics_factory.js"></script>
+        <script src="scripts/basement/providers/analytics_provider.js"></script>
+        <script src="scripts/basement/controllers/navbar_controller.js"></script>
+        <script src="scripts/basement/controllers/index_controller.js"></script>
+        <script src="scripts/basement/controllers/menu_controller.js"></script>
+        <script src="scripts/basement/filters/timesince.js"></script>
+        <script src="scripts/basement/translations.js"></script>
+        <script src="scripts/search/search.js"></script>
+        <script src="scripts/search/services/search_service.js"></script>
+        <script src="scripts/search/controllers/search_controller.js"></script>
+        <script src="scripts/sushial/sushial.js"></script>
+        <script src="scripts/sushial/services/comment_service.js"></script>
+        <script src="scripts/sushial/services/vote_service.js"></script>
+        <script src="scripts/tagool/tagool.js"></script>
+        <script src="scripts/tagool/services/tag_service.js"></script>
+        <script src="scripts/tagool/controllers/tags_controller.js"></script>
+        <script src="scripts/tagool/controllers/tags_detail_controller.js"></script>
+        <!-- endbuild -->
+    </body>
 </html>
