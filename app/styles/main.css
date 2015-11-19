@@ -27,10 +27,18 @@ body {
     background: #eee;
 }
 
+a, button {
+    text-transform: none !important;
+}
+
 /*********************************************************/
 
 .margin-t {
     margin-top: 50px;
+}
+
+.faded {
+    opacity: 0.5 !important;
 }
 
 /*********************************************************/
