@@ -29,19 +29,42 @@ body {
 
 /*********************************************************/
 
-.main-container {
-    background: #eee;
+.margin-t {
+    margin-top: 50px;
 }
 
 /*********************************************************/
 
-.item-single {
-    background: #fff !important;
-    text-align: center !important;
+.main-container {
+    background: #eee;
 }
 
-.item-title {
-    color: #333 !important;
+.container-white {
+    background: #fff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: -10px;
+}
+
+/*********************************************************/
+
+.search-label {
+    font-weight: normal;
+    padding-left: 20px !important;
+}
+
+.tag-list {
+    display: inherit;
+    text-align: center;
+}
+
+.tag-single {
+    text-transform: lowercase !important;
+}
+
+.tag-single > .hashtag {
+    opacity: 0.5;
+    font-size: 18px;
 }
 
 /*********************************************************/
