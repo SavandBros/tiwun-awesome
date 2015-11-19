@@ -5,17 +5,101 @@
 <!-- Add your site or application content here -->
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings">
-            <md-icon class="material-icons">menu</md-icon>
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="sidenavToggle('sidenavLeft')">
+            <md-icon class="mi">menu</md-icon>
         </md-button>
+
         <h2>Tiwun</h2>
-        
+
         <span flex></span>
-        
-        <md-button>
-            <md-icon class="material-icons">account_circle</md-icon>  Join Tiwun <md-icon class="material-icons">chevron_right</md-icon>
+
+        <md-button class="md-icon-button">
+            <md-icon class="mi">search</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button">
+            <md-icon class="mi">add_circle</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button">
+            <md-icon class="mi">label</md-icon>
+        </md-button>
+
+        <md-button ng-href="/account/login/" ng-show="{{ !auth.isAuthenticated() }}">
+            <md-icon class="mi">account_circle</md-icon>  Join Tiwun <md-icon class="mi">chevron_right</md-icon>
         </md-button>
     </div>
 </md-toolbar>
+
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="sidenavLeft">
+
+    <md-toolbar class="md-theme-light">
+
+        <h1 class="md-toolbar-tools user-panel">
+
+            <img ng-show="{{ auth.isAuthenticated() }}" class="image img-circle" ng-src="{{ user.get_gravatar[64] }}">
+
+            <div ng-show="{{ auth.isAuthenticated() }}" class="info" layout="column">
+                <span class="username">{{ user.get_short_name }}</span>
+                <span class="reputation badge">{{ user.reputation }}</span>
+            </div>
+
+            <span flex></span>
+
+            <md-button class="md-icon-button" ng-click="sidenavToggle('sidenavLeft')">
+                <md-icon class="mi">reply</md-icon>
+            </md-button>
+
+        </h1>
+
+    </md-toolbar>
+
+    <md-content ng-click="sidenavToggle('sidenavLeft')">
+
+        <div class="list-group">
+
+            <span ng-show="{{ auth.isAuthenticated() }}">
+
+                <div class="sidenav-item caption">Account</div>
+
+                <a href="/account/user-profile/{{ user.id }}/" class="list-group-item sidenav-item" md-ink-ripple>
+                    <md-icon class="mi">account_box</md-icon>
+                    Profile
+                </a>
+
+                <a href="/user/profile/" class="list-group-item sidenav-item" md-ink-ripple>
+                    <md-icon class="mi">settings_applications</md-icon>
+                    Settings
+                </a>
+
+                <a href="#" class="list-group-item sidenav-item" md-ink-ripple ng-click="auth.logout()">
+                    <md-icon class="mi">lock</md-icon>
+                    Logout
+                </a>
+
+            </span>
+
+            <div class="sidenav-item caption">Explore</div>
+
+            <a href="/search/" class="list-group-item sidenav-item" md-ink-ripple>
+                <md-icon class="mi">search</md-icon>
+                Search
+            </a>
+
+            <a href="/items/create/" class="list-group-item sidenav-item" md-ink-ripple>
+                <md-icon class="mi">add_circle_outline</md-icon>
+                Create Ad
+            </a>
+
+            <a href="/tags/" class="list-group-item sidenav-item" md-ink-ripple>
+                <md-icon class="mi">label_outline</md-icon>
+                Popular Tags
+            </a>
+
+        </div>
+
+    </md-content>
+
+</md-sidenav>
 
 <div ui-view="content" layout-padding class="main-container"></div>

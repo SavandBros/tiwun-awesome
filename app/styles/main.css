@@ -5,7 +5,7 @@
     src: local('Material Icons'), local('MaterialIcons-Regular'), url(/fonts/MaterialIcons-Regular.woff2) format('woff2');
 }
 
-.material-icons {
+.material-icons, .mi {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
@@ -38,7 +38,12 @@ a, button {
 }
 
 .faded {
-    opacity: 0.5 !important;
+    opacity: 0.6 !important;
+}
+
+.md-no-style {
+    -webkit-border-radius: 0 !important;
+            border-radius: 0 !important;
 }
 
 /*********************************************************/
@@ -56,6 +61,45 @@ a, button {
 
 /*********************************************************/
 
+.md-sidenav-left, .sidenav-list {
+    background: #eee;
+    margin: 0;
+    cursor: default;
+}
+
+.sidenav-item.caption {
+    opacity: 0.6;
+    padding-top: 30px;
+    font-style: italic;
+    font-size: smaller;
+}
+
+.sidenav-item {
+    padding: 15px 10px;
+}
+
+/*********************************************************/
+
+.user-panel > .image {
+    width: 48px;
+    margin-right: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.user-panel > .info > .username {
+    text-shadow: 1px 1px 2px #333;
+}
+
+.user-panel > .info > .reputation {
+    font-size: small;
+    display: table;
+    background: rgba(252, 252, 252, 0.2);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 6px;
+}
+
+/*********************************************************/
+
 .search-label {
     font-weight: normal;
     padding-left: 20px !important;
@@ -68,6 +112,11 @@ a, button {
 
 .tag-single {
     text-transform: lowercase !important;
+}
+
+.tag-single:HOVER {
+    background: tomato !important;
+    color: #FFF !important;
 }
 
 .tag-single > .hashtag {

@@ -14,20 +14,40 @@
  * @class IndexController
  * @namespace tiwunAwesome.basement.controllers.IndexController
  */
-function IndexController($scope, $state, $log, gettext, AuthenticationService, ItemService, VoteService) {
-    $scope.items = [];
-    ItemService.all(1, null, 'index/').then(
-        function(data, status, headers, config) {
-            $scope.items = data.data.classifies;
-            $scope.pageHasNext = data.data.page_has_next;
+function IndexController($scope, $state, $log, gettext, AuthenticationService, TagService) {
 
+
+    // $scope.items = [];
+    // ItemService.all(1, null, 'index/').then(
+    //     function(data, status, headers, config) {
+    //         $scope.items = data.data.classifies;
+    //         $scope.pageHasNext = data.data.page_has_next;
+
+    //     },
+    //     function(data, status, headers, config) {
+    //         $log.error(data.error);
+    //     }
+    // );
+
+    $scope.tags = [];
+
+    TagService.all(1).then(
+        function(data, status, headers, config) {
+
+            $scope.tags = $scope.tags.concat(data.data.tags);
+            $scope.pageHasNext = data.data.page_has_next;
         },
         function(data, status, headers, config) {
+
             $log.error(data.error);
         }
     );
 
-    console.log($scope.items);
+    // Logging
+    // console.log($scope.tags);
+
+    //console.log($scope.items);
+
     //$scope.itemKinds = {
     //    itemKindHottest: {
     //        text: gettext('Hottest'),
@@ -185,8 +205,7 @@ function IndexController($scope, $state, $log, gettext, AuthenticationService, I
 angular.module('tiwunAwesome.basement.controllers.IndexController', [
         'tiwunAwesome.basement.services.ToastService',
         'tiwunAwesome.account.services.AuthenticationService',
-        'tiwunAwesome.item.services.ItemService',
-        'tiwunAwesome.sushial.services.VoteService'
+        'tiwunAwesome.tagool.services.TagService'
     ])
     .controller('IndexController', IndexController);
 
@@ -196,6 +215,5 @@ IndexController.$inject = [
     '$log',
     'gettext',
     'AuthenticationService',
-    'ItemService',
-    'VoteService'
+    'TagService'
 ];

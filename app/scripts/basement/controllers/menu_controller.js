@@ -11,7 +11,7 @@
  * @param {Object} gettextCatalog
  * @param {AuthenticationService} AuthenticationService
  */
-function MenuController($window, $scope, gettextCatalog, AuthenticationService) {
+function MenuController($window, $log, $scope, $mdSidenav, gettextCatalog, AuthenticationService) {
     $scope.auth = AuthenticationService;
     $scope.user = AuthenticationService.getAuthenticatedUser();
     $scope.defaultTranslation = $window.localStorage.getItem('translation');
@@ -53,6 +53,11 @@ function MenuController($window, $scope, gettextCatalog, AuthenticationService) 
         $scope.defaultTranslation = translation.selected;
 
     }
+
+    // Sidenav
+    $scope.sidenavToggle = function(navID) {
+        return $mdSidenav(navID).toggle();
+    }
 }
 
 angular.module('tiwunAwesome.basement.controllers.MenuController', [
@@ -60,4 +65,4 @@ angular.module('tiwunAwesome.basement.controllers.MenuController', [
     ])
     .controller('MenuController', MenuController);
 
-MenuController.$inject = ['$window', '$scope', 'gettextCatalog', 'AuthenticationService'];
+MenuController.$inject = ['$window', '$log', '$scope', '$mdSidenav', 'gettextCatalog', 'AuthenticationService'];
