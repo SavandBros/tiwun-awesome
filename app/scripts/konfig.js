@@ -53,7 +53,7 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
             }
         })
         .state('app.userProfile', {
-            url: '/account/user-profile/:userId/',
+            url: '/users/:userSlug/:userId/',
             views: {
                 'content': {
                     templateUrl: 'templates/account/user_profile.html',
