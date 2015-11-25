@@ -46,17 +46,31 @@ a, button {
             border-radius: 0 !important;
 }
 
+.tringle-left {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid blue;
+    border-right-color: #ddd;
+    position: static;
+    float: left;
+}
+
 /*********************************************************/
 
 .main-container {
     background: #eee;
 }
 
-.container-white {
-    background: #fff;
+.container-page {
     padding-top: 50px;
     padding-bottom: 50px;
     margin-top: -10px;
+}
+
+.container-white {
+    background: #fff;
 }
 
 /*********************************************************/
@@ -122,6 +136,75 @@ a, button {
 .tag-single > .hashtag {
     opacity: 0.5;
     font-size: 18px;
+}
+
+/*********************************************************/
+
+.tringle-left.about {
+    margin-left: -13px;
+    margin-top: 13px;
+}
+
+.profile {
+    cursor: default;
+}
+
+.profile.bio > .username {
+    text-shadow: 1px 1px 2px #444;
+    opacity: 0.8;
+}
+
+.profile.bio > .username > span {
+    background: tomato;
+    color: #FFF;
+    font-size: small;
+    font-weight: bold;
+    padding: 8px 10px;
+    position: relative;
+    top: -2px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.profile.bio > .fullname {
+    text-shadow: 1px 1px 2px #777;
+    opacity: 0.8;
+}
+
+.profile > .about > div > span, .profile > .info > span {
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.4;
+}
+
+.profile > .about, .profile > .info {
+    margin-top: 40px;
+}
+
+.profile > .panel-default {
+    background: whitesmoke;
+}
+
+.profile > .info > li {
+    padding-bottom: 15px;
+}
+
+.profile > .info > li:last-of-type {
+    padding-bottom: 10px;
+}
+
+.profile > .info > li > span {
+    opacity: 0.75;
+    font-size: smaller;
+    text-transform: uppercase;
+}
+
+.profile > .info > li > i {
+    background: tomato;
+    padding: 5px;
+    margin-right: 6px;
+    color: #fff;
+    position: relative;
+    top: 6px;
 }
 
 /*********************************************************/

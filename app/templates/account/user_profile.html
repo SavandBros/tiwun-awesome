@@ -1,0 +1,40 @@
+<div ng-controller="UserProfileController" class="container-fluid container-page container-white" ng-clock>
+
+    <md-content class='profile-container'>
+
+        <div class="profile bio text-center col-lg-4 col-md-4">
+            <img class="image img-circle md-whiteframe-5dp" ng-src="{{ profile.get_gravatar[160] || setting.img_404 }}"/>
+
+            <h2 class="username">
+                {{ profile.get_short_name }}
+                <span class="reputation md-whiteframe-3dp" title="Reputation">{{ profile.reputation }}</span>
+            </h2>
+
+            <p class="fullname faded">{{ profile.get_full_name }}</p>
+        </div>
+
+        <div class="profile col-lg-4 col-md-4">
+            <div class="about panel panel-default">
+                <div class="tringle-left about"></div>
+                <div class="panel-body"><span>About</span> {{ profile.about || '...' }}</div>
+            </div>
+        </div>
+
+        <div class="profile col-lg-4 col-md-4">
+            <ul class="info panel panel-default panel-body list-unstyled">
+                <span>Info</span>
+                <li ng-show="profile.website.length">
+                    <i class="mi img-circle md-whiteframe-3dp">web</i> <span>Website:</span> <a ng-href="{{ profile.website }}">{{ profile.website }}</a>
+                </li>
+                <li ng-show="profile.location.length">
+                    <i class="mi img-circle md-whiteframe-3dp">location_on</i> <span>From</span> {{ profile.location }}
+                </li>
+                <li>
+                    <i class="mi img-circle md-whiteframe-3dp">av_timer</i> <span>Member for</span> {{ profile.date_joined | date }}
+                </li>
+            </div>
+        </div>
+
+    </md-content>
+
+</div>
