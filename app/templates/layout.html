@@ -1,5 +1,5 @@
 <!--[if lte IE 8]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
@@ -9,7 +9,7 @@
             <md-icon class="mi">menu</md-icon>
         </md-button>
 
-        <a ng-href="/"><h2>Tiwun</h2></a>
+        <a ui-serif="app.newItem"><h2>Tiwun</h2></a>
 
         <span flex></span>
 
@@ -22,10 +22,10 @@
         </md-button>
 
         <md-button class="md-icon-button">
-            <md-icon class="mi">label</md-icon>
+            <a ui-serif="app.tagList"><md-icon class="mi">label</md-icon></a>
         </md-button>
 
-        <md-button ng-href="/account/login/" ng-show="{{ !auth.isAuthenticated() }}">
+        <md-button ui-serif="app.login" ng-show="{{ !auth.isAuthenticated() }}">
             <md-icon class="mi">account_circle</md-icon>  Join Tiwun <md-icon class="mi">chevron_right</md-icon>
         </md-button>
     </div>
@@ -41,7 +41,7 @@
 
             <div ng-show="{{ auth.isAuthenticated() }}" class="info" layout="column">
                 <span class="username">{{ user.get_short_name }}</span>
-                <span class="reputation badge">{{ user.reputation }}</span>
+                <span class="reputation badge" title="Reputation">{{ user.reputation }}</span>
             </div>
 
             <span flex></span>
@@ -62,17 +62,17 @@
 
                 <div class="sidenav-item caption">Account</div>
 
-                <a href="/account/user-profile/{{ user.id }}/" class="list-group-item sidenav-item" md-ink-ripple>
+                <a ui-serif="app.userProfile" class="list-group-item sidenav-item" md-ink-ripple>
                     <md-icon class="mi">account_box</md-icon>
                     Profile
                 </a>
 
-                <a href="/user/profile/" class="list-group-item sidenav-item" md-ink-ripple>
+                <a ui-serif="app.userSettings" class="list-group-item sidenav-item" md-ink-ripple>
                     <md-icon class="mi">settings_applications</md-icon>
                     Settings
                 </a>
 
-                <a href="#" class="list-group-item sidenav-item" md-ink-ripple ng-click="auth.logout()">
+                <a ng-href="#" class="list-group-item sidenav-item" md-ink-ripple ng-click="auth.logout()">
                     <md-icon class="mi">lock</md-icon>
                     Logout
                 </a>
@@ -81,17 +81,17 @@
 
             <div class="sidenav-item caption">Explore</div>
 
-            <a href="/search/" class="list-group-item sidenav-item" md-ink-ripple>
+            <a ui-serif="app.search" class="list-group-item sidenav-item" md-ink-ripple>
                 <md-icon class="mi">search</md-icon>
                 Search
             </a>
 
-            <a href="/items/create/" class="list-group-item sidenav-item" md-ink-ripple>
+            <a ui-sref='app.newItem' class="list-group-item sidenav-item" md-ink-ripple>
                 <md-icon class="mi">add_circle_outline</md-icon>
                 Create Ad
             </a>
 
-            <a href="/tags/" class="list-group-item sidenav-item" md-ink-ripple>
+            <a ui-serif="app.tagList" class="list-group-item sidenav-item" md-ink-ripple>
                 <md-icon class="mi">label_outline</md-icon>
                 Popular Tags
             </a>

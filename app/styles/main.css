@@ -31,6 +31,10 @@ a, button {
     text-transform: none !important;
 }
 
+.md-toolbar-tools {
+    background: tomato !important;
+}
+
 /*********************************************************/
 
 .margin-t {
@@ -107,9 +111,9 @@ a, button {
 .user-panel > .info > .reputation {
     font-size: small;
     display: table;
-    background: rgba(252, 252, 252, 0.2);
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     margin-top: 6px;
+    border-bottom: 1px solid #666;
 }
 
 /*********************************************************/
