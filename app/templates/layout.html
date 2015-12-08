@@ -9,7 +9,7 @@
             <md-icon class="mi">menu</md-icon>
         </md-button>
 
-        <a ui-serif="app.newItem"><h2>Tiwun</h2></a>
+        <a ui-sref="app.explore"><h2>Tiwun</h2></a>
 
         <span flex></span>
 
@@ -22,10 +22,10 @@
         </md-button>
 
         <md-button class="md-icon-button">
-            <a ui-serif="app.tagList"><md-icon class="mi">label</md-icon></a>
+            <a ui-sref="app.tagList"><md-icon class="mi">label</md-icon></a>
         </md-button>
 
-        <md-button ui-serif="app.login" ng-show="{{ !auth.isAuthenticated() }}">
+        <md-button ui-sref="app.login" ng-show="{{ !auth.isAuthenticated() }}">
             <md-icon class="mi">account_circle</md-icon>  Join Tiwun <md-icon class="mi">chevron_right</md-icon>
         </md-button>
     </div>
@@ -62,12 +62,12 @@
 
                 <div class="sidenav-item caption">Account</div>
 
-                <a ui-serif="app.userProfile" class="list-group-item sidenav-item" md-ink-ripple>
+                <a ui-sref="app.userProfile({'usedId': '{{ user.id }}'})" class="list-group-item sidenav-item" md-ink-ripple>
                     <md-icon class="mi">account_box</md-icon>
                     Profile
                 </a>
 
-                <a ui-serif="app.userSettings" class="list-group-item sidenav-item" md-ink-ripple>
+                <a ui-sref="app.userSettings({'usedId': '{{ user.id }}'})" class="list-group-item sidenav-item" md-ink-ripple>
                     <md-icon class="mi">settings_applications</md-icon>
                     Settings
                 </a>
@@ -81,7 +81,7 @@
 
             <div class="sidenav-item caption">Explore</div>
 
-            <a ui-serif="app.search" class="list-group-item sidenav-item" md-ink-ripple>
+            <a ui-sref="app.search" class="list-group-item sidenav-item" md-ink-ripple>
                 <md-icon class="mi">search</md-icon>
                 Search
             </a>
@@ -91,7 +91,7 @@
                 Create Ad
             </a>
 
-            <a ui-serif="app.tagList" class="list-group-item sidenav-item" md-ink-ripple>
+            <a ui-sref="app.tagList" class="list-group-item sidenav-item" md-ink-ripple>
                 <md-icon class="mi">label_outline</md-icon>
                 Popular Tags
             </a>

@@ -35,6 +35,11 @@ a, button {
     background: tomato !important;
 }
 
+.button-fat {
+    padding: 6px 18px;
+    font-weight: bold;
+}
+
 /*********************************************************/
 
 .margin-t {
@@ -59,6 +64,23 @@ a, button {
     border-right-color: #ddd;
     position: static;
     float: left;
+}
+
+/*********************************************************/
+
+.bg-tomato {
+    background: tomato;
+    padding: 14px;
+    border-bottom: 6px solid rgba(0, 0, 0, 0.15);
+    padding-bottom: 10px;
+    -webkit-box-shadow: 0 2px 2px #aaa;
+            box-shadow: 0 2px 2px #aaa;
+}
+
+.bg-tomato > * {
+    color: #FFF;
+    -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 /*********************************************************/

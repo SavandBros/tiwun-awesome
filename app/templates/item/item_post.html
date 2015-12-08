@@ -3,6 +3,20 @@
     <form name="form" ng-submit="create(form, item)">
 
         <div class="list">
+            <!-- Title (Errors) -->
+            <ul class="list-unstyled">
+                <li class="bg-tomato" ng-show="form.title.$invalid && !form.title.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Title is required.</translate>
+                </li>
+
+                <li class="bg-tomato" ng-show="form.title.$error.minlength && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Title is too short.</translate>
+                </li>
+
+                <li class="bg-tomato" ng-show="form.title.$error.maxlength && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Title is too long.</translate>
+                </li>
+            </ul>
             <!-- Title -->
             <md-input-container class="item item-input"
                    ng-class="{ 'md-input-invalid' : form.title.$invalid && !form.title.$pristine  && formSubmitted }">
@@ -15,6 +29,17 @@
                        ng-minlength="5"
                        ng-maxlength="155">
             </md-input-container>
+
+            <!-- Descriptions Errors -->
+            <ul class="list-unstyled">
+                <li class="bg-tomato" ng-show="form.description.$invalid && !form.description.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Description is required.</translate>
+                </li>
+
+                <li class="bg-tomato" ng-show="form.description.$error.minlength && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Description is too short.</translate>
+                </li>
+            </ul>
 
             <!-- Description -->
             <md-input-container class="item item-input"
@@ -30,75 +55,109 @@
                         </textarea>
             </md-input-container>
 
-            <!-- Is Free ? -->
-            <ul class="list">
-                <li class="item item-toggle">
-                    <translate>Is it free ?</translate>
-                    <md-input-container class="toggle toggle-assertive">
-                        <input name="isFree" ng-model="item.isFree" type="checkbox">
-                        <div class="track">
-                            <div class="handle"></div>
-                        </div>
-                    </md-input-container>
+            <hr>
+
+            <!-- isFree checkbox -->
+            <md-checkbox aria-label="Is it free?" ng-model="item.isFree" class="md-primary">
+                <translate>Is it Free?</translate>
+            </md-checkbox>
+
+            <hr>
+
+
+            <!-- Money Currency Errors -->
+            <ul class="list-unstyled">
+                <li class="bg-tomato" ng-show="form.moneyCurrency.$invalid && !form.moneyCurrency.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>You need to specify the Money Currency.</translate>
+                </li>
+            </ul>
+            <!-- Minimum Price Errors -->
+            <ul class="list-unstyled">
+                <li class="bg-tomato" ng-show="form.minPrice.$invalid && !form.minPrice.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Minimum Price is required if item is not free.</translate>
+                </li>
+
+                <li class="bg-tomato" ng-show="form.minPrice.$error.min && !form.minPrice.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Minimum price at least should be 0 or higher but not less that 0.</translate>
+                </li>
+            </ul>
+            <!-- Maximum Price Errors -->
+            <ul class="list-unstyled">
+                <li class="bg-tomato" ng-show="form.maxPrice.$invalid && !form.maxPrice.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Maximum Price is required if item is not free.</translate>
+                </li>
+
+                <li class="bg-tomato" ng-show="form.maxPrice.$error.min && !form.maxPrice.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Maximum Price should be higher than equal or higher than Minimum Price.</translate>
+                </li>
+            </ul>
+            <!-- Discounted Price Errors -->
+            <ul class="list-unstyled">
+                <li class="bg-tomato" ng-show="form.discountedPrice.$error.max && !form.discountedPrice.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Discounted Price should not be higher than Maximum Price.</translate>
                 </li>
             </ul>
 
-            <md-input-container class="item item-input item-select" ng-if="!item.isFree">
-                <div class="input-label">
-                    <translate>Money Currency</translate>
-                </div>
-                <md-select name="moneyCurrency"
-                        ng-model="item.moneyCurrency"
-                        ng-required="!item.isFree">
-                    <md-option ng-repeat="k in moneyCurrencies" value="{{k}}">
-                        {{k}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
+            <!-- Price -->
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label><translate>Money Currency</translate></label>
+                    <md-select name="moneyCurrency" ng-model="item.moneyCurrency" ng-required="!item.isFree">
+                        <md-option ng-repeat="k in moneyCurrencies" value="{{ k }}">
+                            {{ k }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex ng-class="{ 'md-input-invalid' : form.minPrice.$invalid && !form.minPrice.$pristine && formSubmitted }">
+                    <label><translate>Min Price</translate></label>
+                    <input type="number"
+                           name="minPrice"
+                           ng-model="item.minPrice"
+                           ng-required="!item.isFree"
+                           ng-min="0">
 
-            <div class="row" ng-if="!item.isFree">
-                <div class="col">
-                    <!-- Minimum Price -->
-                    <md-input-container class="item item-input"
-                           ng-class="{ 'md-input-invalid' : form.minPrice.$invalid && !form.minPrice.$pristine  && formSubmitted }">
-                        <label>{{ 'Minimum Price'|translate }}</label>
-                        <input type="number"
-                               name="minPrice"
-                               ng-model="item.minPrice"
-                               ng-required="!item.isFree"
-                               ng-min="0">
-                    </md-input-container>
-                </div>
-                <div class="col">
-                    <!-- Maximum Price -->
-                    <md-input-container class="item item-input"
-                           ng-class="{ 'md-input-invalid' : form.maxPrice.$invalid && !form.maxPrice.$pristine  && formSubmitted }">
-                        <label>{{ 'Maximum Price'|translate }}</label>
-                        <input type="number"
-                               name="maxPrice"
-                               ng-model="item.maxPrice"
-                               ng-required="!item.isFree"
-                               ng-min="item.minPrice">
-                    </md-input-container>
-                </div>
-                <div class="col">
-                    <!-- Discounted Price -->
-                    <md-input-container class="item item-input"
-                           ng-class="{ 'md-input-invalid' : form.discountedPrice.$invalid && !form.discountedPrice.$pristine  && formSubmitted }">
-                        <label>{{ 'Discounted Price'|translate }}</label>
-                        <input type="number"
-                               name="discountedPrice"
-                               ng-model="item.discountedPrice"
-                               ng-max="item.maxPrice"
-                               ng-required="false">
-                    </md-input-container>
-                </div>
+                </md-input-container>
+                <md-input-container flex ng-class="{ 'md-input-invalid' : form.maxPrice.$invalid && !form.maxPrice.$pristine  && formSubmitted }">
+                    <label><translate>Max Price</translate></label>
+                    <input type="number"
+                           name="maxPrice"
+                           ng-model="item.maxPrice"
+                           ng-required="!item.isFree"
+                           ng-min="item.minPrice">
+
+                </md-input-container>
+                <md-input-container flex
+                    type="number"
+                    name="discountedPrice"
+                    ng-model="item.discountedPrice"
+                    ng-max="item.maxPrice"
+                    ng-required="false">
+
+                    <label type="number"
+                           name="discountedPrice" ng-model="item.discountedPrice" ng-max="item.maxPrice" ng-required="false"><translate>Discounted Price</translate></label>
+                    <input ng-model="user.city">
+                </md-input-container>
             </div>
 
+            <br>
 
-            <md-input-container class="item item-input"
-                   ng-class="{ 'md-input-invalid' : form.tags.$invalid && !form.tags.$pristine && formSubmitted }">
-                <label>{{ 'Tags separated by space'|translate }}</label>
+            <!-- Tags Errors -->
+            <ul class="list-unstyled">
+                <li class="bg-tomato" ng-show="form.tags.$invalid && !form.tags.$pristine && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Tags are required.</translate>
+                </li>
+                <li class="bg-tomato"ng-show="form.tags.$error.minlength && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Tags are too short.</translate>
+                </li>
+                <li class="bg-tomato" ng-show="form.tags.$error.maxlength && formSubmitted">
+                    <md-icon class="mi">error_outline</md-icon> <translate>Tags are too long.</translate>
+                </li>
+            </ul>
+
+            <!-- Tags -->
+            <md-input-container class="md-icon-float md-block" ng-class="{ 'md-input-invalid' : form.tags.$invalid && !form.tags.$pristine && formSubmitted }">
+                <label><translate>Tags (Separated by space)</translate></label>
+                <md-icon class="mi">label_outline</md-icon>
                 <input type="text"
                        name="tags"
                        ng-model="item.tags"
@@ -108,86 +167,13 @@
                        required>
             </md-input-container>
 
-            <!-- Errors -->
-            <div class="list faded-light">
-                <br>
-                <!-- Title Errors -->
-                <div id="titleErrors">
-                    <p class="item item-error bar bar-assertive" ng-show="form.title.$invalid && !form.title.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Title is required.</translate>
-                    </p>
-
-                    <p class="item item-error bar bar-assertive" ng-show="form.title.$error.minlength && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Title is too short.</translate>
-                    </p>
-
-                    <p class="item item-error bar bar-assertive" ng-show="form.title.$error.maxlength && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Title is too long.</translate>
-                    </p>
-                </div>
-                <!-- Descriptions Errors -->
-                <div id="descriptionErrors">
-                    <p class="item item-error bar bar-assertive" ng-show="form.description.$invalid && !form.description.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Description is required.</translate>
-                    </p>
-
-                    <p class="item item-error bar bar-assertive" ng-show="form.description.$error.minlength && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Description is too short.</translate>
-                    </p>
-                </div>
-                <!-- Money Currency Errors -->
-                <div id="moneyCurrencyErrors">
-                    <p class="item item-error bar bar-assertive" ng-show="form.moneyCurrency.$invalid && !form.moneyCurrency.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>You need to specify the Money Currency.</translate>
-                    </p>
-                </div>
-                <!-- Minimum Price Errors -->
-                <div id="minPriceErrors">
-                    <p class="item item-error bar bar-assertive" ng-show="form.minPrice.$invalid && !form.minPrice.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Minimum Price is required if item is not free.</translate>
-                    </p>
-
-                    <p class="item item-error bar bar-assertive" ng-show="form.minPrice.$error.min && !form.minPrice.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Minimum price at least should be 0 or higher but not less that 0.</translate>
-                    </p>
-                </div>
-                <!-- Maximum Price Errors -->
-                <div id="maxPriceErrors">
-                    <p class="item item-error bar bar-assertive" ng-show="form.maxPrice.$invalid && !form.maxPrice.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Maximum Price is required if item is not free.</translate>
-                    </p>
-
-                    <p class="item item-error bar bar-assertive" ng-show="form.maxPrice.$error.min && !form.maxPrice.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Maximum Price should be higher than equal or higher than Minimum Price.</translate>
-                    </p>
-                </div>
-                <!-- Discounted Price Errors -->
-                <div id="discountedPriceErrors">
-                    <p class="item item-error bar bar-assertive" ng-show="form.discountedPrice.$error.max && !form.discountedPrice.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Discounted Price should not be higher than Maximum Price.</translate>
-                    </p>
-                </div>
-                <!-- Tags Errors -->
-                <div id="tagsErrors">
-                    <p class="item item-error bar bar-assertive" ng-show="form.tags.$invalid && !form.tags.$pristine && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Tags are required.</translate>
-                    </p>
-                    <p class="item item-error bar bar-assertive"ng-show="form.tags.$error.minlength && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Tags are too short.</translate>
-                    </p>
-                    <p class="item item-error bar bar-assertive" ng-show="form.tags.$error.maxlength && formSubmitted">
-                        <i class="icon icon-error-bg ion-information-circled"></i> <translate>Tags are too long.</translate>
-                    </p>
-                </div>
-            </div>
+            <hr>
 
             <!-- Buttons -->
-            <button class="button button-full button-positive" type="submit">
-                <i class="ion-android-checkmark-circle"></i> <translate>Create Post</translate>
-            </button>
-            <a href="#!/app/explor" class="button button-full button-small button-assertive button-outline">
-                <translate>Cancel</translate>
-            </a>
+            <md-button class="md-raised md-primary button-fat" type="submit">
+                <md-icon class="mi">check_circle</md-icon>
+                <translate>Submit Post</translate>
+            </md-button>
         </div>
     </form>
 
