@@ -99,10 +99,10 @@
             </ul>
 
             <!-- Price -->
-            <div layout layout-sm="column">
+            <div layout layout-sm="column" ng-if="!item.isFree">
                 <md-input-container flex>
                     <label><translate>Money Currency</translate></label>
-                    <md-select name="moneyCurrency" ng-model="item.moneyCurrency" ng-required="!item.isFree">
+                    <md-select name="moneyCurrency" ng-model="item.moneyCurrency">
                         <md-option ng-repeat="k in moneyCurrencies" value="{{ k }}">
                             {{ k }}
                         </md-option>
@@ -113,7 +113,6 @@
                     <input type="number"
                            name="minPrice"
                            ng-model="item.minPrice"
-                           ng-required="!item.isFree"
                            ng-min="0">
 
                 </md-input-container>
@@ -122,7 +121,6 @@
                     <input type="number"
                            name="maxPrice"
                            ng-model="item.maxPrice"
-                           ng-required="!item.isFree"
                            ng-min="item.minPrice">
 
                 </md-input-container>

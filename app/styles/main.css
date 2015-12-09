@@ -23,10 +23,6 @@
 
 /*********************************************************/
 
-body {
-    background: #eee;
-}
-
 a, button {
     text-transform: none !important;
 }
@@ -85,10 +81,6 @@ a, button {
 
 /*********************************************************/
 
-.main-container {
-    background: #eee;
-}
-
 .container-page {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -96,7 +88,13 @@ a, button {
 }
 
 .container-white {
-    background: #fff;
+    background: #fff !important;
+}
+
+.container-eee {
+    background: rgba(245,245,245,0.5) !important;
+    -webkit-box-shadow: 0 0 30px #ddd;
+            box-shadow: 0 0 30px #ddd;
 }
 
 /*********************************************************/
@@ -150,18 +148,50 @@ a, button {
     text-align: center;
 }
 
-.tag-single {
+.tag-list > .tag-single {
     text-transform: lowercase !important;
 }
 
-.tag-single:HOVER {
+.tag-list > .tag-single:HOVER {
     background: tomato !important;
     color: #FFF !important;
 }
 
-.tag-single > .hashtag {
+.tag-list > .tag-single > .hashtag {
     opacity: 0.5;
     font-size: 18px;
+}
+
+.tag-list > .tag-single > .count {
+    color: rgba(0, 0, 0, 0.5);
+    padding: 5px 8px;
+    margin-left: 8px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+/*********************************************************/
+
+.tag-grid > div > .tag-single {
+    padding: 5px 2px;
+    border: 1px solid tomato;
+    color: tomato;
+    font-weight: bold;
+}
+
+.tag-grid > div > .tag-single:HOVER {
+    background: tomato !important;
+    color: #FFF !important;
+}
+
+.tag-grid > div > .tag-single > .count {
+    display: block;
+    margin: 10px -2px;
+    margin-bottom: 5px;
+    background: tomato;
+    color: #fff;
+    font-size: larger;
 }
 
 /*********************************************************/

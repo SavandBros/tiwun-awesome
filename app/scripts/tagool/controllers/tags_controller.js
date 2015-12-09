@@ -15,7 +15,6 @@ function TagsController($scope, $log, TagService) {
     $scope.pageHasNext = true;
     $scope.pageCounter = 0;
 
-
     /**
      * Load More
      *
@@ -36,6 +35,11 @@ function TagsController($scope, $log, TagService) {
             }
         );
     };
+
+    $scope.loadMore()
+    $scope.loadMore()
+    $scope.loadMore()
+    $scope.loadMore()
 }
 
 angular.module('tiwunAwesome.tagool.controllers.TagsController', [
