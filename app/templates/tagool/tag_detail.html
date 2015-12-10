@@ -1,0 +1,34 @@
+<div ng-controller="TagsDetailController" class="container container-page container-eee">
+
+    <div class="col-lg-10 col-lg-offset-1">
+        <!-- Heading title -->
+        <h3 class="faded">
+            Posts tagged with
+            <b><md-icon class="mi">label</md-icon> {{ tagName }}</b>
+        </h3>
+        <hr>
+
+        <!-- Tag items list -->
+        <div class="item-list col-md-10 col-md-offset-1">
+
+            <div class="list-group">
+
+                <a ui-sref="app.singleItem({'itemId': '{{ item.id }}'})" class="list-group-item" ng-repeat='item in tagItems' style="color: #169" md-ink-ripple>
+
+                    <img ng-src="{{ item.get_primary_image.tiny || 'http://placehold.it/42x42' }}" width="42" height="42" class="img-circle">
+
+                    {{ item.title }}
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Load section -->
+        <div class="row">
+            <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
+            <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore()" ng-if="!loading">LOAD MORE</md-button>
+        </div>
+    </div>
+</div>

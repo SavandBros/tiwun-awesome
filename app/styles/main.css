@@ -81,6 +81,10 @@ a, button {
 
 /*********************************************************/
 
+.container > md-content {
+    background: none !important;
+}
+
 .container-page {
     padding-top: 50px;
     padding-bottom: 50px;

@@ -1,15 +1,15 @@
-<div ng-controller="TagsController" class="explore container container-page container-eee" ng-clock when-scrolled="loadMore()">
+<div ng-controller="TagsController" class="container container-page container-eee" when-scrolled="loadMore()">
 
     <div class="col-lg-10 col-lg-offset-1">
         <!-- Heading title -->
-        <h3 class="faded col-"><md-icon class="mi">label</md-icon> Popular tags</h3><hr>
+        <h3 class="faded"><md-icon class="mi">label</md-icon> Popular tags</h3><hr>
 
         <!-- Tag list -->
-        <div class="tag-grid row margin-t">
+        <div class="tag-grid">
 
             <div class="col-md-3 col-sm-4 col-xs-6" ng-repeat='tag in tags'>
 
-                <md-button class="md-raised tag-single col-xs-12" ui-sref="app.tagDetail({'tagSlug': '{{ tag.slug }}' })" ng-repeat='tag in tags'>
+                <md-button class="md-raised tag-single col-xs-12" ui-sref="app.tagDetail({'tagSlug': '{{ tag.slug }}' })" md-ink-ripple>
 
                     {{ tag.slug }}
 
@@ -21,6 +21,12 @@
 
             </div>
 
+        </div>
+
+        <!-- Load section -->
+        <div class="row">
+            <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
+            <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore()" ng-if="!loading">LOAD MORE</md-button>
         </div>
     </div>
 </div>

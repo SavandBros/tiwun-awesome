@@ -14,6 +14,7 @@ function TagsController($scope, $log, TagService) {
     $scope.tags = [];
     $scope.pageHasNext = true;
     $scope.pageCounter = 0;
+    $scope.loading = true;
 
     /**
      * Load More
@@ -22,13 +23,14 @@ function TagsController($scope, $log, TagService) {
      * @memberOf tiwunAwesome.tagool.controllers.TagsController
      */
     $scope.loadMore = function() {
+        $scope.loading = true;
+
         TagService.all(++$scope.pageCounter).then(
             function(data, status, headers, config) {
                 $scope.tags = $scope.tags.concat(data.data.tags);
-
                 $scope.pageHasNext = data.data.page_has_next;
-
                 $scope.$broadcast('scroll.infiniteScrollComplete');
+                $scope.loading = false;
             },
             function(data, status, headers, config) {
                 $log.error(data.error);
@@ -36,9 +38,6 @@ function TagsController($scope, $log, TagService) {
         );
     };
 
-    $scope.loadMore()
-    $scope.loadMore()
-    $scope.loadMore()
     $scope.loadMore()
 }
 
