@@ -268,3 +268,78 @@ a, button {
 }
 
 /*********************************************************/
+
+.item-inner {
+    text-align: center;
+    overflow: hidden;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-bottom-width: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    background: #fff;
+    -webkit-border-radius: 2px;
+            border-radius: 2px;
+    -webkit-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+}
+
+.item-inner:HOVER, .item-inner:FOCUS {
+    text-decoration: none;
+    border-color: tomato;
+    outline: none;
+    background: rgba(255, 99, 71, 0.05);
+}
+
+.item-inner:ACTIVE {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+}
+
+.item-inner > d {
+    background: rgba(255, 99, 71, 0.8);
+    color: #fff;
+    padding: 6px 10px;
+    padding-bottom: 4px;
+    position: relative;
+    float: left;
+    left: -1px;
+    top: 10px;
+    margin-bottom: -40px;
+    z-index: 9;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+}
+
+.item-inner > d > span {
+    font-size: 10px;
+}
+
+.item-inner > img {
+    max-width: 100%;
+    min-height: 50px;
+}
+
+.item-inner > p {
+    height: 45px;
+    overflow: hidden;
+    color: #444;
+    font-size: small;
+    padding: 10px;
+}
+
+.item-inner > s {
+    font-size: small;
+    color: #aaa;
+    float: right;
+    padding: 0 10px;
+}
+
+.item-inner > span {
+    font-size: larger;
+    float: right;
+    padding: 0 10px;
+}
+
+/*********************************************************/

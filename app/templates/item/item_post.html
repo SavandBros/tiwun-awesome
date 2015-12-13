@@ -1,4 +1,4 @@
-<md-content ng-controller="UserProfileController" class="container-fluid container-page container-white col-lg-8 col-md-10 col-lg-offset-2 col-md-offset-1" ng-clock>
+<md-content ng-controller="UserProfileController" class="container container-page container-eee col-lg-8 col-md-10 col-lg-offset-2 col-md-offset-1" ng-clock>
 
     <form name="form" ng-submit="create(form, item)">
 
@@ -17,6 +17,7 @@
                     <md-icon class="mi">error_outline</md-icon> <translate>Title is too long.</translate>
                 </li>
             </ul>
+
             <!-- Title -->
             <md-input-container class="item item-input"
                    ng-class="{ 'md-input-invalid' : form.title.$invalid && !form.title.$pristine  && formSubmitted }">
@@ -64,13 +65,13 @@
 
             <hr>
 
-
             <!-- Money Currency Errors -->
             <ul class="list-unstyled">
                 <li class="bg-tomato" ng-show="form.moneyCurrency.$invalid && !form.moneyCurrency.$pristine && formSubmitted">
                     <md-icon class="mi">error_outline</md-icon> <translate>You need to specify the Money Currency.</translate>
                 </li>
             </ul>
+
             <!-- Minimum Price Errors -->
             <ul class="list-unstyled">
                 <li class="bg-tomato" ng-show="form.minPrice.$invalid && !form.minPrice.$pristine && formSubmitted">
@@ -81,6 +82,7 @@
                     <md-icon class="mi">error_outline</md-icon> <translate>Minimum price at least should be 0 or higher but not less that 0.</translate>
                 </li>
             </ul>
+
             <!-- Maximum Price Errors -->
             <ul class="list-unstyled">
                 <li class="bg-tomato" ng-show="form.maxPrice.$invalid && !form.maxPrice.$pristine && formSubmitted">
@@ -91,6 +93,7 @@
                     <md-icon class="mi">error_outline</md-icon> <translate>Maximum Price should be higher than equal or higher than Minimum Price.</translate>
                 </li>
             </ul>
+
             <!-- Discounted Price Errors -->
             <ul class="list-unstyled">
                 <li class="bg-tomato" ng-show="form.discountedPrice.$error.max && !form.discountedPrice.$pristine && formSubmitted">

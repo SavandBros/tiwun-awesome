@@ -44,5 +44,10 @@
         };
 
         $scope.loadMore();
+        $scope.loadMore();
+        $scope.loadMore();
+        $scope.loadMore();
+        $scope.loadMore();
+        $scope.loadMore();
     }
 })();

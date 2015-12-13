@@ -38,7 +38,9 @@ function TagsController($scope, $log, TagService) {
         );
     };
 
-    $scope.loadMore()
+    $scope.loadMore();
+    $scope.loadMore();
+    $scope.loadMore();
 }
 
 angular.module('tiwunAwesome.tagool.controllers.TagsController', [
