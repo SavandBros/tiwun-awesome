@@ -22,7 +22,6 @@
         $scope.tagName = $stateParams.tagSlug;
         $scope.loading = true;
 
-
         /**
          * @name loadMore
          */
@@ -41,6 +40,7 @@
                     $log.error(data.error);
                 }
             );
+            $('.grid').matchHeight();
         };
 
         $scope.loadMore();
