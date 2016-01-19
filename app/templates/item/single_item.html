@@ -1,0 +1,246 @@
+<div ng-controller="SingleItemController" class="container container-page container-eee">
+
+    <div class="row item-heading">
+
+        <div class="col-xs-12">
+
+            <h4>Big ass dildo 4th generation (Red, Dual Battery, Wifi, 16 GB)</h4>
+
+            <div class="item-prices pull-right">
+
+                <em>was 99.00 USD</em>
+
+                <b>47.00 USD</b>
+
+            </div>
+
+        </div>
+
+        <div class="col-xs-12">
+
+            <md-button class="md-flat md-mini md-warn" href="#">
+                <md-icon class='mi'>account_box</md-icon> amirm3hdi
+            </md-button>
+
+            <ul class="item-details pull-right list-unstyled">
+
+                <li title="Views">
+                    <i class='mi'>remove_red_eye</i>
+                    <span>1,382</span>
+
+                </li>
+
+                <li title="Likes">
+                    <i class='mi'>thumb_up</i>
+                    <span>23</span>
+
+                </li>
+
+                <li title="Date">
+                    <i class='mi'>hourglass_empty</i>
+                    <span>12 days ago</span>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="row item-body">
+
+        <div class="col-md-8 image-container">
+
+            <div class="image-preview">
+
+                <img src="http://cf3.souqcdn.com/item/2015/09/14/84/20/11/8/item_XL_8420118_9480417.jpg">
+
+            </div>
+
+            <div class="image-list">
+
+                <div class="image">
+                    <img src="http://placehold.it/64x64">
+                </div>
+
+                <div class="image">
+                    <img src="http://placehold.it/64x64">
+                </div>
+
+                <div class="image">
+                    <img src="http://placehold.it/64x64">
+                </div>
+
+                <div class="image">
+                    <img src="http://placehold.it/64x64">
+                </div>
+
+            </div>
+
+            <div class="description panel panel-default">
+
+                <div class="panel-heading">
+                    <md-icon class="mi">info</md-icon> Description
+                </div>
+
+                <div class="panel-body">
+                    The Chuck Taylor All Star high top is the most iconic sneaker in the world, recognized for its unmistakable silhouette, star-centered ankle patch and cultural authenticity.
+                    <br>And like the best paradigms, it only gets better with time. For generations, these classic colors and quality vulcanized rubber sole have defined an icon. Born on the court but adopted by rebels, rockers, rappers,
+                    <br> artists, dreamers, thinkers and originals, the Chuck Taylor All Star continues to celebrate personal style and individual self-expression.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <md-icon class="mi">question_answer</md-icon> Comments
+                </div>
+
+                <div class="panel-body">
+
+                    <md-input-container class="md-block" style="margin: -10px 0;">
+                        <label>Enter comment...</label>
+                        <input type="text">
+                    </md-input-container>
+
+                    <ul class="comment-list list-group">
+
+                        <li class="comment list-group-item">
+                            <a href="#"><small>Alireza:</small></a> Very good comment here.
+                        </li>
+
+                        <li class="comment list-group-item">
+                            <a href="#"><small>amirm3hdi:</small></a> Damn it another hrer.
+                        </li>
+
+                        <li class="comment list-group-item">
+                            <a href="#"><small>dumbuser23:</small></a> Atleast I'm the 3rd one :)
+                        </li>
+
+                        <li class="comment list-group-item">
+                            <a href="#"><small>Alireza:</small></a> Fuck, then wtf am I???.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <md-icon class="mi">star</md-icon> Other content
+                </div>
+
+                <div class="panel-body">
+
+                    ...
+
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <md-icon class="mi">language</md-icon> More content
+                </div>
+
+                <div class="panel-body">
+
+                    ...
+
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <md-icon class="mi">language</md-icon> Even more
+                </div>
+
+                <div class="panel-body">
+
+                    ...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--
+<ion-view view-title="{{ item.title }}">
+    <ion-nav-title>{{ item.title }}</ion-nav-title>
+    <ion-content>
+        <div class="list card">
+            <item item="item" image="'multi'" up-vote="upVote(item)" down-vote="downVote(item)" add-comment="addComment"></item>
+        </div>
+
+        <form name="form" ng-submit="addComment(form, comment)">
+            <div class="bar item-input-inset">
+                <label class="item-input-wrap full">
+                    <input
+                        class="full"
+                        type="text"
+                        name="comment"
+                        ng-model="comment.text"
+                        placeholder="{{ 'Comment...'|translate }}"
+                        ng-change="checkAuth()"
+                        ng-required="true"
+                        required>
+                </label>
+            </div>
+        </form>
+
+        <ion-list>
+            <ion-item class="item item-avatar" ng-repeat="comment in item.comments">
+                <img ng-src="{{ comment.user.get_gravatar[64] }}">
+                <h2><a href="#!/app/account/user-profile/{{ comment.user.id }}/">{{ comment.user.get_short_name }}</a></h2>
+                <p>
+                    {{ comment.comment }}
+                    <br>
+                    {{ comment.created | timesince }} <translate>ago</translate>
+                </p>
+
+                <ion-option-button
+                    ng-if="comment.user.id === user.id"
+                    class="button-assertive ion-trash-a"
+                    ng-click="deleteComment(comment)">
+                </ion-option-button>
+
+                <ion-option-button
+                    ng-if="comment.user.id === user.id"
+                    class="button-dark ion-edit"
+                    ng-click="editComment(comment)">
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+
+        <div class="amir-dialog anime" ng-show="isEditing">
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="editInput" placeholder="Edit comment..." style="width: 100%">
+                </label>
+                <button class="button button-outline button-positive" ng-click="editComment(comment)">
+                    <i class="ion-checkmark-round"></i>
+                </button>
+            </div>
+        </div>
+
+        <br><br>
+
+    </ion-content>
+</ion-view>
+ -->

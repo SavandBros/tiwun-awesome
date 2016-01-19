@@ -40,8 +40,10 @@
             <img ng-show="{{ auth.isAuthenticated() }}" class="image img-circle" ng-src="{{ user.get_gravatar[64] }}">
 
             <div ng-show="{{ auth.isAuthenticated() }}" class="info" layout="column">
-                <span class="username">{{ user.get_short_name }}</span>
-                <span class="reputation badge" title="Reputation">{{ user.reputation }}</span>
+                <a ui-sref="app.userProfile({'userId': '{{ user.id }}'})"
+                   ng-click="sidenavToggle('sidenavLeft')"
+                   class="username">{{ user.get_short_name }}</a>
+                <span class="reputation badge md-whiteframe-1dp" title="Reputation">{{ user.reputation }}</span>
             </div>
 
             <span flex></span>
@@ -62,12 +64,12 @@
 
                 <div class="sidenav-item caption">Account</div>
 
-                <a ui-sref="app.userProfile({'usedId': '{{ user.id }}'})" class="list-group-item sidenav-item" md-ink-ripple>
+                <a ui-sref="app.userProfile({'userId': '{{ user.id }}'})" class="list-group-item sidenav-item" md-ink-ripple>
                     <md-icon class="mi">account_box</md-icon>
                     Profile
                 </a>
 
-                <a ui-sref="app.userSettings({'usedId': '{{ user.id }}'})" class="list-group-item sidenav-item" md-ink-ripple>
+                <a ui-sref="app.userSettings({'userId': '{{ user.id }}'})" class="list-group-item sidenav-item" md-ink-ripple>
                     <md-icon class="mi">settings_applications</md-icon>
                     Settings
                 </a>

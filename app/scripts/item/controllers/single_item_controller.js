@@ -47,7 +47,6 @@ function SingleItemController($scope, $stateParams, $state,
             function(data, status, headers, config) {
                 $log.error('Error on receiving item');
                 $log.error(data.error);
-                //$ionicHistory.goBack();
             }
         );
     }

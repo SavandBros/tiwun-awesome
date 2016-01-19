@@ -36,6 +36,10 @@ a, button {
     font-weight: bold;
 }
 
+label {
+    font-weight: normal;
+}
+
 /*********************************************************/
 
 .margin-t {
@@ -137,7 +141,6 @@ a, button {
     display: table;
     background-color: rgba(0, 0, 0, 0.2);
     margin-top: 6px;
-    border-bottom: 1px solid #666;
 }
 
 /*********************************************************/
@@ -340,6 +343,113 @@ a, button {
     font-size: larger;
     float: right;
     padding: 0 10px;
+}
+
+/*********************************************************/
+
+.item-heading  {
+    cursor: default;
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.item-heading > div > h4 {
+    color: #444;
+    display: inline-block;
+}
+
+.item-prices {
+    margin: 10px 0;
+}
+.item-prices > b {
+    color: #337ab7;
+    font-size: large;
+}
+.item-prices > em {
+    color: #555;
+    font-size: small;
+    margin-right: 10px;
+}
+
+.item-details {
+    margin: 10px 0;
+}
+.item-details > li {
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+    font-size: small;
+}
+.item-details > li > span {
+    position: relative;
+    top: -2px;
+    padding-right: 10px;
+    padding-left: 4px;
+}
+.item-details > li > .mi {
+    font-size: 14px;
+    position: relative;
+    background: #eee;
+    padding: 8px;
+    color: tomato;
+}
+
+.image-container > .image-preview {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 5px;
+    background: #fff;
+    text-align: center;
+}
+
+.image-container > .image-preview > img {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.image-container > .image-list {
+    margin: 0;
+    border: 1px solid #ddd;
+    background: #fff;
+    margin-top: -5px;
+    border-top: 0;
+    margin-bottom: 15px;
+}
+
+.image-container > .image-list > .image {
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+}
+
+.image-container > .image-list > .image > img {
+    border: 1px solid #ddd;
+    max-width: 100%;
+    border-radius: 2px;
+    padding: 3px;
+    cursor: pointer;
+    margin: 5px;
+    width: 64px;
+}
+
+.image-container > .image-list > .image > img:HOVER {
+    border-color: tomato;
+}
+
+/*********************************************************/
+
+.comment-list {
+    margin: 0 -15px;
+}
+
+.comment-list > .comment {
+    border-right: 0;
+    border-left: 0;
+    -webkit-border-radius: 0;
+            border-radius: 0;
 }
 
 /*********************************************************/
