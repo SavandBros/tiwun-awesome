@@ -14,9 +14,14 @@
         <span flex></span>
 
         <md-button class="md-icon-button">
-            <md-icon class="mi">search</md-icon>
+            <a ui-sref='app.search'><md-icon class="mi">search</md-icon></a>
         </md-button>
-
+<!--
+        <md-input-container class="md-block navbar-search" ng-show="navSearch">
+          <label>Search...</label>
+          <input>
+        </md-input-container>
+ -->
         <md-button class="md-icon-button">
             <a ui-sref='app.newItem'><md-icon class="mi">add_circle</md-icon></a>
         </md-button>

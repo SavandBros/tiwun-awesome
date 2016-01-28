@@ -25,6 +25,7 @@ function SingleItemController($scope, $stateParams, $state,
     $scope.user = $scope.auth.getAuthenticatedUser();
 
     $scope.isEditing = false;
+    $scope.mainImageUrl = "http://cf3.souqcdn.com/item/2015/09/14/84/20/11/8/item_XL_8420118_9480417.jpg";
 
     /**
      * Actions to be performed when this controller is instantiated.
@@ -222,6 +223,12 @@ function SingleItemController($scope, $stateParams, $state,
                 $scope.editInput = comment.comment;
             }
         }
+    }
+
+
+    $scope.setMainImage = function(url) {
+
+        $scope.mainImageUrl = url;
     }
 }
 

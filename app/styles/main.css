@@ -281,6 +281,7 @@ label {
     padding-bottom: 10px;
     margin-bottom: 15px;
     background: #fff;
+    width: 100%;
     -webkit-border-radius: 2px;
             border-radius: 2px;
     -webkit-transition: all 0.15s ease-in-out;
@@ -453,3 +454,15 @@ label {
 }
 
 /*********************************************************/
+
+.navbar-search > input {
+    color: #FFF !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    min-width: 400px;
+    font-size: smaller;
+}
+
+.navbar-search > label {
+    font-size: small;
+    color: rgba(0, 0, 0, 0.2) !important;
+}

@@ -8,7 +8,7 @@
 
             <div class="item-prices pull-right">
 
-                <em>was 99.00 USD</em>
+                <em><s>was 99.00 USD</s></em>
 
                 <b>47.00 USD</b>
 
@@ -50,30 +50,30 @@
 
     <div class="row item-body">
 
-        <div class="col-md-8 image-container">
+        <div class="col-md-7 image-container">
 
             <div class="image-preview">
 
-                <img src="http://cf3.souqcdn.com/item/2015/09/14/84/20/11/8/item_XL_8420118_9480417.jpg">
+                <img ng-src='{{ mainImageUrl }}'>
 
             </div>
 
             <div class="image-list">
 
                 <div class="image">
-                    <img src="http://placehold.it/64x64">
+                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
                 </div>
 
                 <div class="image">
-                    <img src="http://placehold.it/64x64">
+                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
                 </div>
 
                 <div class="image">
-                    <img src="http://placehold.it/64x64">
+                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
                 </div>
 
                 <div class="image">
-                    <img src="http://placehold.it/64x64">
+                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
                 </div>
 
             </div>
@@ -93,7 +93,59 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <md-icon class="mi">label_outline</md-icon> Tags
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="tag-list" layout='row' layout-align="space-around center">
+
+                        <md-button class="md-raised tag-single" href="#">
+                            new
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            red
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            for-men
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            new
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            red
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            for-men
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            product-awesome
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            awesome
+                        </md-button>
+
+                        <md-button class="md-raised tag-single" href="#">
+                            for-men
+                        </md-button>
+
+                    </div>
+
+                </div>
+
+            </div>
 
             <div class="panel panel-default">
 
@@ -127,48 +179,6 @@
                         </li>
 
                     </ul>
-
-                </div>
-
-            </div>
-
-            <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <md-icon class="mi">star</md-icon> Other content
-                </div>
-
-                <div class="panel-body">
-
-                    ...
-
-                </div>
-
-            </div>
-
-            <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <md-icon class="mi">language</md-icon> More content
-                </div>
-
-                <div class="panel-body">
-
-                    ...
-
-                </div>
-
-            </div>
-
-            <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <md-icon class="mi">language</md-icon> Even more
-                </div>
-
-                <div class="panel-body">
-
-                    ...
 
                 </div>
 
