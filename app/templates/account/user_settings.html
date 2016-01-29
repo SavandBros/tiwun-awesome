@@ -1,0 +1,63 @@
+<div ng-controller="UserSettingsController" class="container container-page container-eee col-md-6 col-md-offset-3" ng-clock>
+
+    <md-content>
+
+        <!-- Heading -->
+        <h4 class="faded">
+            <md-icon class="mi">settings_applications</md-icon> Profile Settings
+            <hr>
+        </h4>
+
+        <!-- Inputs -->
+        <div class="settings">
+
+            <!-- Username -->
+            <md-input-container>
+                <label>Name</label>
+                <input value="{{ setting.name }}">
+            </md-input-container>
+
+            <!-- Real name -->
+            <md-input-container>
+                <label>Real Name</label>
+                <input value="{{ setting.real_name }}">
+            </md-input-container>
+
+            <!-- Website -->
+            <md-input-container>
+                <label>Website</label>
+                <input value="{{ setting.website }}">
+            </md-input-container>
+
+            <!-- Location -->
+            <md-input-container>
+                <label>Location</label>
+                <input value="{{ setting.location }}">
+            </md-input-container>
+
+            <!-- About -->
+            <md-input-container>
+                <label>About</label>
+                <textarea rows="5">{{ setting.about }}</textarea>
+            </md-input-container>
+
+            <!-- Checkboxes -->
+            <hr>
+            <md-checkbox>
+                Receive comment notification by email.
+            </md-checkbox>
+            <hr>
+            <md-checkbox>
+                Receive vote notification by email.
+            </md-checkbox>
+            <hr>
+
+            <!-- Update button -->
+            <md-button class="md-fab md-primary pull-right" title="Click to save changes.">
+                <md-icon class="mi">check</md-icon>
+            </md-button>
+        </div>
+
+    </md-content>
+
+</div>

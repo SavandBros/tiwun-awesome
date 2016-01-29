@@ -15,7 +15,7 @@
  * @class UserSettingsController
  * @namespace tiwunAwesome.account.controllers.UserSettingsController
  */
-function UserSettingsController($scope, $state, $log, gettextCatalog, ToastService, UserService, AuthenticationService) {
+function UserSettingsController($scope, $state, $stateParams, $log, gettextCatalog, ToastService, UserService, AuthenticationService) {
     /**
      * Actions to be performed when this controller is instantiated
      *
@@ -34,7 +34,7 @@ function UserSettingsController($scope, $state, $log, gettextCatalog, ToastServi
                      *
                      * @property {Object} user
                      */
-                    $scope.user = data.data;
+                    $scope.setting = data.data.user;
                 },
                 function(data, status, headers, config) {
                     ToastService.show('Error in getting user: ' + data.data.error);
@@ -70,4 +70,4 @@ angular.module('tiwunAwesome.account.controllers.UserSettingsController', [
     ])
     .controller('UserSettingsController', UserSettingsController);
 
-UserSettingsController.$inject = ['$scope', '$state', '$log', 'gettextCatalog', 'ToastService', 'UserService', 'AuthenticationService'];
+UserSettingsController.$inject = ['$scope', '$state', '$stateParams', '$log', 'gettextCatalog', 'ToastService', 'UserService', 'AuthenticationService'];
