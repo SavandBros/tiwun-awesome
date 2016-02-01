@@ -7,9 +7,11 @@
  * @class UserProfileController
  * @namespace tiwunAwesome.account.controllers.UserProfileController
  */
-function UserProfileController($scope, $stateParams, $log, UserService, ItemService) {
+function UserProfileController($scope, $stateParams, $log, UserService, ItemService, CommentService) {
     $scope.profileItems = [];
+    $scope.profileComments = [];
     $scope.pageCounter = 0;
+    $scope.currentTab = '';
     /**
      * Actions to be performed when this controller is instantiated
      *
@@ -20,7 +22,7 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
         UserService.get($stateParams.userId).then(
             function(data, status, headers, config) {
                 $scope.profile = data.data.user;
-                $scope.activateTab('items');
+                $scope.activateTab('comments');
             },
             function(data, status, headers, config) {
                 $log.error('Error in getting user: ' + data.error);
@@ -29,8 +31,9 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
     }
 
     $scope.activateTab = function(tab) {
-        if (tab != $scope.activeTab) {
-            $scope.activeTab = tab;
+        if (tab != $scope.currentTab) {
+            $scope.currentTab = tab;
+            $scope.pageCounter = 1;
 
             if (tab === 'items') {
                 ItemService.items({
@@ -38,10 +41,25 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
                     page: 1
                 }).then(
                     function(data, status, headers, config) {
-                        $scope.profileItems = data.data.items
+                        $scope.profileItems = data.data.items;
+                        $('.grid').matchHeight();
                     },
                     function(data, status, headers, config) {
                         $log.error('Error in getting user items: ' + data.error);
+                    }
+                );
+            }
+
+            else if (tab == 'comments') {
+                // Retrieve user's comment.
+                CommentService.userComments($scope.profile.id, 1).then(
+                    function(data, status, headers, config) {
+                        $scope.profileComments = data.data.comments;
+                        $('.grid').matchHeight();
+                    },
+                    function(data, status, headers, config) {
+                        $log.error("[error] on getting comments!");
+                        $log.error(data.error);
                     }
                 );
             }
@@ -49,6 +67,10 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
     };
 
     $scope.loadMore = function(tab) {
+
+        if ($scope.currentTab != tab)
+            $scope.pageCounter = 0;
+
         if (tab === 'items') {
             ItemService.items({
                 user_id: $stateParams.userId,
@@ -65,17 +87,32 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
                 }
             );
         }
+
+        else if (tab === 'comments') {
+            // Retrieve user's comment.
+            CommentService.userComments($scope.profile.id, ++$scope.pageCounter).then(
+                function(data, status, headers, config) {
+                    $scope.profileComments = $scope.profileComments.concat(data.data.comments);
+                },
+                function(data, status, headers, config) {
+                    $log.error("[error] on getting comments!");
+                    $log.error(data.error);
+                }
+            );
+        }
+
+        $scope.currentTab = tab;
     };
 
     constructor();
-    $scope.loadMore('items');
 }
 
 
 angular.module('tiwunAwesome.account.controllers.UserProfileController', [
         'tiwunAwesome.account.services.UserService',
-        'tiwunAwesome.item.services.ItemService'
+        'tiwunAwesome.item.services.ItemService',
+        'tiwunAwesome.sushial.services.CommentService'
     ])
     .controller('UserProfileController', UserProfileController);
 
-UserProfileController.$inject = ['$scope', '$stateParams', '$log', 'UserService', 'ItemService'];
+UserProfileController.$inject = ['$scope', '$stateParams', '$log', 'UserService', 'ItemService', 'CommentService'];

@@ -31,6 +31,10 @@ a, button {
     background: tomato !important;
 }
 
+md-tab-item {
+    color: rgb(63,81,181) !important;
+}
+
 .button-fat {
     padding: 6px 18px;
     font-weight: bold;
@@ -354,6 +358,7 @@ label {
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 10px;
+    width: 100%;
 }
 .item-heading > div > h4 {
     color: #444;

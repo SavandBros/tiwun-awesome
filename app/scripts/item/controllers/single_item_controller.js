@@ -19,13 +19,13 @@
  * @param {AuthenticationService} AuthenticationService
  *
  **/
-function SingleItemController($scope, $stateParams, $state,
+function SingleItemController($scope, $stateParams, $state, $sanitize,
     $log, gettextCatalog, ToastService, ItemService, CommentService, VoteService, AuthenticationService) {
     $scope.auth = AuthenticationService;
     $scope.user = $scope.auth.getAuthenticatedUser();
 
     $scope.isEditing = false;
-    $scope.mainImageUrl = "http://cf3.souqcdn.com/item/2015/09/14/84/20/11/8/item_XL_8420118_9480417.jpg";
+    $scope.mainImageUrl = "";
 
     /**
      * Actions to be performed when this controller is instantiated.
@@ -44,6 +44,11 @@ function SingleItemController($scope, $stateParams, $state,
                     downVote: false
                 };
                 $scope.$broadcast('itemLoaded');
+                $scope.mainImageUrl = $scope.item.get_primary_image.standard;
+
+                console.log("--------------------------");
+                console.log($scope.context.item);
+                console.log("--------------------------");
             },
             function(data, status, headers, config) {
                 $log.error('Error on receiving item');
@@ -80,6 +85,10 @@ function SingleItemController($scope, $stateParams, $state,
         CommentService.filterByObject(1, $scope.item.id).then(
             function(data, status, headers, config) {
                 $scope.item.comments = data.data.comments;
+
+                console.log(data);
+                console.log(data.data);
+                console.log(data.data.comments);
             },
             function(data, status, headers, config) {
                 $log.error("[error] on getting comments!");
@@ -226,7 +235,7 @@ function SingleItemController($scope, $stateParams, $state,
     }
 
 
-    $scope.setMainImage = function(url) {
+    $scope.SetImagePreview = function(url) {
 
         $scope.mainImageUrl = url;
     }
@@ -246,6 +255,7 @@ SingleItemController.$inject = [
     '$scope',
     '$stateParams',
     '$state',
+    '$sanitize',
     '$log',
     'gettextCatalog',
     'ToastService',

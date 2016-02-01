@@ -4,13 +4,13 @@
 
         <div class="col-xs-12">
 
-            <h4>Big ass dildo 4th generation (Red, Dual Battery, Wifi, 16 GB)</h4>
+            <h5>{{ item.title }}</h5>
 
-            <div class="item-prices pull-right">
+            <div class="item-prices pull-right" ng-if="item.has_price">
 
-                <em><s>was 99.00 USD</s></em>
+                <em><s>was {{ item.get_compare_at_price_display }}</s></em>
 
-                <b>47.00 USD</b>
+                <b>{{ item.get_max_price_display }}</b>
 
             </div>
 
@@ -18,27 +18,27 @@
 
         <div class="col-xs-12">
 
-            <md-button class="md-flat md-mini md-warn" href="#">
-                <md-icon class='mi'>account_box</md-icon> amirm3hdi
+            <md-button ui-sref="app.userProfile({'userId': '{{ item.user_id }}'})" class="md-flat md-mini md-warn">
+                <md-icon class='mi'>account_box</md-icon> {{ item.user_name }}
             </md-button>
 
             <ul class="item-details pull-right list-unstyled">
 
                 <li title="Views">
                     <i class='mi'>remove_red_eye</i>
-                    <span>1,382</span>
+                    <span>{{ item.views_count }}</span>
 
                 </li>
 
                 <li title="Likes">
                     <i class='mi'>thumb_up</i>
-                    <span>23</span>
+                    <span>{{ item.voting_score }}</span>
 
                 </li>
 
                 <li title="Date">
                     <i class='mi'>hourglass_empty</i>
-                    <span>12 days ago</span>
+                    <span>{{ item.updated | date }}</span>
 
                 </li>
 
@@ -52,28 +52,16 @@
 
         <div class="col-md-7 image-container">
 
-            <div class="image-preview">
+            <div class="image-preview" ng-if="item.has_images">
 
                 <img ng-src='{{ mainImageUrl }}'>
 
             </div>
 
-            <div class="image-list">
+            <div class="image-list" ng-if="item.has_images">
 
-                <div class="image">
-                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
-                </div>
-
-                <div class="image">
-                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
-                </div>
-
-                <div class="image">
-                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
-                </div>
-
-                <div class="image">
-                    <img src="http://placehold.it/64x64" ng-onclick="$scope.mainImageUrl = 'fuck'">
+                <div class="image" ng-repeat="image in item.images">
+                    <img ng-src="{{ image.tiny }}" ng-click="SetImagePreview( image.standard )">
                 </div>
 
             </div>
@@ -84,11 +72,7 @@
                     <md-icon class="mi">info</md-icon> Description
                 </div>
 
-                <div class="panel-body">
-                    The Chuck Taylor All Star high top is the most iconic sneaker in the world, recognized for its unmistakable silhouette, star-centered ankle patch and cultural authenticity.
-                    <br>And like the best paradigms, it only gets better with time. For generations, these classic colors and quality vulcanized rubber sole have defined an icon. Born on the court but adopted by rebels, rockers, rappers,
-                    <br> artists, dreamers, thinkers and originals, the Chuck Taylor All Star continues to celebrate personal style and individual self-expression.
-                </div>
+                <div class="panel-body" ng-bind-html="item.description"></div>
             </div>
 
         </div>
@@ -105,40 +89,8 @@
 
                     <div class="tag-list" layout='row' layout-align="space-around center">
 
-                        <md-button class="md-raised tag-single" href="#">
-                            new
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            red
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            for-men
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            new
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            red
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            for-men
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            product-awesome
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            awesome
-                        </md-button>
-
-                        <md-button class="md-raised tag-single" href="#">
-                            for-men
+                        <md-button ui-sref="app.tagDetail({'tagSlug': '{{ item.tag }}'})" class="md-raised tag-single" ng-repeat="tag in item.tags">
+                            {{ tag }}
                         </md-button>
 
                     </div>
@@ -151,6 +103,7 @@
 
                 <div class="panel-heading">
                     <md-icon class="mi">question_answer</md-icon> Comments
+                    <span class="label label-danger pull-right">{{ item.comments_count }}</span>
                 </div>
 
                 <div class="panel-body">
@@ -162,20 +115,12 @@
 
                     <ul class="comment-list list-group">
 
-                        <li class="comment list-group-item">
-                            <a href="#"><small>Alireza:</small></a> Very good comment here.
-                        </li>
-
-                        <li class="comment list-group-item">
-                            <a href="#"><small>amirm3hdi:</small></a> Damn it another hrer.
-                        </li>
-
-                        <li class="comment list-group-item">
-                            <a href="#"><small>dumbuser23:</small></a> Atleast I'm the 3rd one :)
-                        </li>
-
-                        <li class="comment list-group-item">
-                            <a href="#"><small>Alireza:</small></a> Fuck, then wtf am I???.
+                        <li class="comment list-group-item" ng-repeat="comment in item.comments">
+                            <a ui-sref="app.userProfile({'userId': '{{ comment.user.id }}'})">
+                                <small>{{ comment.user.name }}: </small>
+                            </a>
+                            {{ comment.comment }}
+                            <em class="pull-right"><small>{{ comment.get_created_since }} ago</small></em>
                         </li>
 
                     </ul>
