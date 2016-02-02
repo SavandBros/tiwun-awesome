@@ -197,7 +197,6 @@ label {
 }
 
 .tag-grid > div > .tag-single > .count {
-    display: block;
     margin: 10px -2px;
     margin-bottom: 5px;
     background: tomato;
