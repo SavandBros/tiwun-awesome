@@ -31,17 +31,23 @@ function IndexController($scope, $state, $log, gettext, AuthenticationService, T
 
     $scope.tags = [];
 
-    TagService.all(1).then(
-        function(data, status, headers, config) {
+    function loadTags(page) {
+        TagService.all(page).then(
+            function(data, status, headers, config) {
 
-            $scope.tags = $scope.tags.concat(data.data.tags);
-            $scope.pageHasNext = data.data.page_has_next;
-        },
-        function(data, status, headers, config) {
+                $scope.tags = $scope.tags.concat(data.data.tags);
+                $scope.pageHasNext = data.data.page_has_next;
+            },
+            function(data, status, headers, config) {
 
-            $log.error(data.error);
-        }
-    );
+                $log.error(data.error);
+            }
+        );
+    }
+
+    loadTags(1);
+    loadTags(2);
+    loadTags(3);
 
     // Logging
     // console.log($scope.tags);
