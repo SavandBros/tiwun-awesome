@@ -1,4 +1,4 @@
-<div ng-controller="UserProfileController" class="container-fluid container-page container-white" ng-clock>
+<div ng-controller="UserProfileController" class="container container-page container-eee" ng-clock>
 
     <md-content class='profile-container'>
 
@@ -35,41 +35,45 @@
             </div>
         </div>
 
-        <md-tabs md-dynamic-height md-border-bottom class="profile tabs container container-page container-eee img-rounded">
-            <md-tab label="Items" ng-click="activateTab('items')">
-                <md-content class="md-padding">
-                    <div class="profile items col-xs-12">
-                        <!-- User item list -->
-                        <div class="items margin-t">
-                            <item class="item-single col-lg-2 col-md-3 col-sm-4 col-xs-6" item="item" ng-repeat="item in profileItems"></item>
+        <br><br><br>
+
+        <div class="container container-page container-eee">
+            <md-tabs md-dynamic-height class="profile tabs">
+                <md-tab label="Items" ng-click="activateTab('items')">
+                    <md-content class="md-padding">
+                        <div class="profile items col-xs-12">
+                            <!-- User item list -->
+                            <div class="items margin-t">
+                                <item class="item-single col-lg-2 col-md-3 col-sm-4 col-xs-6" item="item" ng-repeat="item in profileItems"></item>
+                            </div>
+                            <!-- Load section -->
+                            <div class="row">
+                                <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
+                                <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore('items')" ng-if="!loading">LOAD MORE</md-button>
+                            </div>
                         </div>
-                        <!-- Load section -->
-                        <div class="row">
-                            <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
-                            <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore('items')" ng-if="!loading">LOAD MORE</md-button>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Comments" ng-click="activateTab('comments')">
+                    <md-content class="md-padding">
+                        <div class="profile comments col-xs-12">
+                            <!-- User comment list -->
+                            <div class="panel panel-default panel-body" ng-repeat="comment in profileComments">
+                                <small>Commented</small>
+                                {{ comment.comment }}
+                                <small>on</small>
+                                <a ui-sref="app.singleItem({'itemId': '{{ comment.object_pk }}'})">on a post</a>
+                                <em><small>{{ comment.get_created_since }} ago.</small></em>
+                            </div>
+                            <!-- Load section -->
+                            <div class="row">
+                                <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
+                                <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore('comments')" ng-if="!loading">LOAD MORE</md-button>
+                            </div>
                         </div>
-                    </div>
-                </md-content>
-            </md-tab>
-            <md-tab label="Comments" ng-click="activateTab('comments')">
-                <md-content class="md-padding">
-                    <div class="profile comments col-xs-12">
-                        <!-- User comment list -->
-                        <div class="panel panel-default panel-body" ng-repeat="comment in profileComments">
-                            <small>Commented</small>
-                            {{ comment.comment }}
-                            <small>on</small>
-                            <a ui-sref="app.singleItem({'itemId': '{{ comment.object_pk }}'})">on a post</a>
-                            <em><small>{{ comment.get_created_since }} ago.</small></em>
-                        </div>
-                        <!-- Load section -->
-                        <div class="row">
-                            <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
-                            <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore('comments')" ng-if="!loading">LOAD MORE</md-button>
-                        </div>
-                    </div>
-                </md-content>
-            </md-tab>
-        </md-tabs>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </div>
     </md-content>
 </div>
