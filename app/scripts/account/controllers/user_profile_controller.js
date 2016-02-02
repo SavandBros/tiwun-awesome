@@ -12,25 +12,9 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
     $scope.profileComments = [];
     $scope.pageCounter = 0;
     $scope.currentTab = '';
-    /**
-     * Actions to be performed when this controller is instantiated
-     *
-     * @method constructor
-     * @memberOf UserProfileController
-     */
-    function constructor() {
-        UserService.get($stateParams.userId).then(
-            function(data, status, headers, config) {
-                $scope.profile = data.data.user;
-                $scope.activateTab('comments');
-            },
-            function(data, status, headers, config) {
-                $log.error('Error in getting user: ' + data.error);
-            }
-        );
-    }
 
     $scope.activateTab = function(tab) {
+
         if (tab != $scope.currentTab) {
             $scope.currentTab = tab;
             $scope.pageCounter = 1;
@@ -42,7 +26,7 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
                 }).then(
                     function(data, status, headers, config) {
                         $scope.profileItems = data.data.items;
-                        $('.grid').matchHeight();
+                        // $('.grid').matchHeight();
                     },
                     function(data, status, headers, config) {
                         $log.error('Error in getting user items: ' + data.error);
@@ -103,6 +87,24 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
 
         $scope.currentTab = tab;
     };
+
+    /**
+     * Actions to be performed when this controller is instantiated
+     *
+     * @method constructor
+     * @memberOf UserProfileController
+     */
+    function constructor() {
+        UserService.get($stateParams.userId).then(
+            function(data, status, headers, config) {
+                $scope.profile = data.data.user;
+                $scope.activateTab('items');
+            },
+            function(data, status, headers, config) {
+                $log.error('Error in getting user: ' + data.error);
+            }
+        );
+    }
 
     constructor();
 }
