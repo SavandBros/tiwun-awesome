@@ -2,11 +2,12 @@
 
     <md-content class="autoScroll">
 
+        <!-- Search input -->
         <form name="form" ng-submit="search(form, query)">
 
             <md-input-container class="md-icon-float md-block">
 
-                <label class="search-label search-main">Search</label>
+                <label class="search-label search-main">Search...</label>
                 <md-icon class="material-icons">search</md-icon>
                 <input type="text" class="search-input search-main">
 
@@ -14,14 +15,38 @@
 
         </form>
 
-        <div class="tag-list margin-t col-md-8 col-md-offset-2" layout='row' layout-align="space-around center">
 
-            <md-button class="md-raised tag-single" href="tags/{{ tag.slug }}/" ng-repeat='tag in tags'>
-                <md-icon class='hashtag'>#</md-icon> {{ tag.slug }}
-            </md-button>
+        <!-- Load section -->
+        <div ng-show="items.length">
+            <md-progress-linear md-mode="indeterminate" ng-if="shouldSpin"></md-progress-linear>
+            <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore()" ng-if="!shouldSpin">LOAD MORE</md-button>
+        </div>
 
+        <div class="list faded-light" ng-show="noResult">
+            <br>
+
+            <p class="item item-error bar bar-assertive center">
+                <i class="icon icon-error-bg ion-information-circled"></i> <translate>No result has been found :(</translate>
+            </p>
+        </div>
+
+        <br><br>
+
+        <!-- Popular tags -->
+        <div class="toptags-list col-md-8 col-md-offset-2" ng-show="!items.length">
+            <h5 class="faded">
+                <md-icon class="mi">label_outline</md-icon> Popular Tags
+                <hr>
+            </h5>
+
+            <div class="tag-list" layout='row' layout-align="space-around center">
+
+                <md-button class="md-raised tag-single" href="tags/{{ tag.slug }}/" ng-repeat='tag in tags'>
+                    <md-icon class='hashtag'>#</md-icon> {{ tag.slug }}
+                </md-button>
+
+            </div>
         </div>
 
     </md-content>
-
 </div>
