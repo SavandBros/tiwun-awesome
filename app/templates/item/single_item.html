@@ -89,9 +89,10 @@
 
                     <div class="tag-list" layout='row' layout-align="space-around center">
 
-                        <md-button ui-sref="app.tagDetail({'tagSlug': '{{ item.tag }}'})" class="md-raised tag-single" ng-repeat="tag in item.tags">
-                            {{ tag }}
-                        </md-button>
+                        <div class="tag-list" layout='row' layout-align="space-around center">
+                            <tagool tag="tag" ng-repeat='tag in item.tags'></tagool>
+                        </div>
+
 
                     </div>
 

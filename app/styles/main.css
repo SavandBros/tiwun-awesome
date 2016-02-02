@@ -159,21 +159,21 @@ label {
     text-align: center;
 }
 
-.tag-list > .tag-single {
+.tag-single {
     text-transform: lowercase !important;
 }
 
-.tag-list > .tag-single:HOVER {
+.tag-single:HOVER {
     background: tomato !important;
     color: #FFF !important;
 }
 
-.tag-list > .tag-single > .hashtag {
+.tag-single > .hashtag {
     opacity: 0.5;
     font-size: 18px;
 }
 
-.tag-list > .tag-single > .count {
+.tag-single > .count {
     color: rgba(0, 0, 0, 0.5);
     padding: 5px 8px;
     margin-left: 8px;

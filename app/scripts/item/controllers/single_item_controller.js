@@ -46,9 +46,10 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
                 $scope.$broadcast('itemLoaded');
                 $scope.mainImageUrl = $scope.item.get_primary_image.standard;
 
-                console.log("--------------------------");
-                console.log($scope.context.item);
-                console.log("--------------------------");
+                // Convert tags to use for tag directive
+                for (var i = $scope.item.tags.length - 1; i >= 0; i--) {
+                    $scope.item.tags[i] = {'slug': $scope.item.tags[i]};
+                };
             },
             function(data, status, headers, config) {
                 $log.error('Error on receiving item');
@@ -85,10 +86,6 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
         CommentService.filterByObject(1, $scope.item.id).then(
             function(data, status, headers, config) {
                 $scope.item.comments = data.data.comments;
-
-                console.log(data);
-                console.log(data.data);
-                console.log(data.data.comments);
             },
             function(data, status, headers, config) {
                 $log.error("[error] on getting comments!");
