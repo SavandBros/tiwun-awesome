@@ -111,6 +111,27 @@ label {
 
 /*********************************************************/
 
+footer {
+    border-top: 1px solid #eee;
+    background: whitesmoke;
+    margin-top: 20px;
+    -webkit-box-shadow: 0 1000px 0 1000px whitesmoke;
+            box-shadow: 0 1000px 0 1000px whitesmoke;
+}
+
+.footer.container
+{
+    padding: 40px 0;
+    opacity: 0.7;
+}
+
+.footer.container:HOVER
+{
+    opacity: 1;
+}
+
+/*********************************************************/
+
 .md-sidenav-left, .sidenav-list {
     background: #eee;
     margin: 0;

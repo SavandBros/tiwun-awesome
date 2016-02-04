@@ -111,6 +111,46 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                     controller: 'TagsDetailController'
                 }
             }
+        })
+        .state('app.editing-guide', {
+            url: '/editing-guide/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/editing-guide.html'
+                }
+            }
+        })
+        .state('app.about', {
+            url: '/about/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/about.html'
+                }
+            }
+        })
+        .state('app.terms-of-service', {
+            url: '/terms-of-service/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/tos.html'
+                }
+            }
+        })
+        .state('app.faq', {
+            url: '/faq/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/faq.html'
+                }
+            }
+        })
+        .state('app.privacy_policy', {
+            url: '/privacy-policy/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/privacy_policy.html'
+                }
+            }
         });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
