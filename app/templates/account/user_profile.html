@@ -1,0 +1,79 @@
+<div ng-controller="UserProfileController" class="container container-page container-eee" ng-clock>
+
+    <md-content class='profile-container'>
+
+        <div class="profile bio text-center col-lg-4 col-md-4">
+            <img class="image img-circle md-whiteframe-5dp" ng-src="{{ profile.get_gravatar[128] }}"/>
+
+            <h2 class="username">
+                {{ profile.get_short_name }}
+                <span class="reputation md-whiteframe-1dp" title="Reputation">{{ profile.reputation }}</span>
+            </h2>
+
+            <p class="fullname faded">{{ profile.get_full_name }}</p>
+        </div>
+
+        <div class="profile col-lg-4 col-md-4">
+            <div class="about panel panel-default">
+                <div class="tringle-left about"></div>
+                <div class="panel-body"><span>About</span> {{ profile.about || '...' }}</div>
+            </div>
+        </div>
+
+        <div class="profile col-lg-4 col-md-4">
+            <ul class="info panel panel-default panel-body list-unstyled">
+                <span>Info</span>
+                <li ng-show="profile.website.length">
+                    <i class="mi img-circle md-whiteframe-1dp">web</i> <span>Website:</span> <a target="_blank" ng-href="{{ profile.website }}">{{ profile.website }}</a>
+                </li>
+                <li ng-show="profile.location.length">
+                    <i class="mi img-circle md-whiteframe-1dp">location_on</i> <span>From</span> {{ profile.location }}
+                </li>
+                <li>
+                    <i class="mi img-circle md-whiteframe-1dp">av_timer</i> <span>Member for</span> {{ profile.date_joined | date }}
+                </li>
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <div class="container container-page container-eee">
+            <md-tabs md-dynamic-height class="profile tabs">
+                <md-tab label="Items" ng-click="activateTab('items')">
+                    <md-content class="md-padding">
+                        <div class="profile items col-xs-12">
+                            <!-- User item list -->
+                            <div class="items margin-t">
+                                <item class="item-single col-lg-2 col-md-3 col-sm-4 col-xs-6" item="item" ng-repeat="item in profileItems"></item>
+                            </div>
+                            <!-- Load section -->
+                            <div class="row">
+                                <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
+                                <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore('items')" ng-if="!loading">LOAD MORE</md-button>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Comments" ng-click="activateTab('comments')">
+                    <md-content class="md-padding">
+                        <div class="profile comments col-xs-12">
+                            <!-- User comment list -->
+                            <div class="panel panel-default panel-body" ng-repeat="comment in profileComments">
+                                <small>Commented</small>
+                                {{ comment.comment }}
+                                <small>on</small>
+                                <a ui-sref="app.singleItem({'itemId': '{{ comment.object_pk }}'})">on a post</a>
+                                <em><small>{{ comment.get_created_since }} ago.</small></em>
+                            </div>
+                            <!-- Load section -->
+                            <div class="row">
+                                <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
+                                <md-button class="md-raised md-primary col-xs-12" ng-click="loadMore('comments')" ng-if="!loading">LOAD MORE</md-button>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </div>
+    </md-content>
+</div>

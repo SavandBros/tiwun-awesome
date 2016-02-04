@@ -58,6 +58,14 @@ function MenuController($window, $log, $scope, $mdSidenav, gettextCatalog, Authe
     $scope.sidenavToggle = function(navID) {
         return $mdSidenav(navID).toggle();
     }
+
+    // Naavbar search
+    $scope.navSearch = false;
+
+    // Show search in navbar
+    $scope.showSearch = function() {
+        $scope.navSearch = true;
+    }
 }
 
 angular.module('tiwunAwesome.basement.controllers.MenuController', [

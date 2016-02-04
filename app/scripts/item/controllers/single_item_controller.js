@@ -19,12 +19,13 @@
  * @param {AuthenticationService} AuthenticationService
  *
  **/
-function SingleItemController($scope, $stateParams, $state,
+function SingleItemController($scope, $stateParams, $state, $sanitize,
     $log, gettextCatalog, ToastService, ItemService, CommentService, VoteService, AuthenticationService) {
     $scope.auth = AuthenticationService;
     $scope.user = $scope.auth.getAuthenticatedUser();
 
     $scope.isEditing = false;
+    $scope.mainImageUrl = "";
 
     /**
      * Actions to be performed when this controller is instantiated.
@@ -43,11 +44,16 @@ function SingleItemController($scope, $stateParams, $state,
                     downVote: false
                 };
                 $scope.$broadcast('itemLoaded');
+                $scope.mainImageUrl = $scope.item.get_primary_image.standard;
+
+                // Convert tags to use for tag directive
+                for (var i = $scope.item.tags.length - 1; i >= 0; i--) {
+                    $scope.item.tags[i] = {'slug': $scope.item.tags[i]};
+                };
             },
             function(data, status, headers, config) {
                 $log.error('Error on receiving item');
                 $log.error(data.error);
-                //$ionicHistory.goBack();
             }
         );
     }
@@ -224,6 +230,12 @@ function SingleItemController($scope, $stateParams, $state,
             }
         }
     }
+
+
+    $scope.SetImagePreview = function(url) {
+
+        $scope.mainImageUrl = url;
+    }
 }
 
 
@@ -240,6 +252,7 @@ SingleItemController.$inject = [
     '$scope',
     '$stateParams',
     '$state',
+    '$sanitize',
     '$log',
     'gettextCatalog',
     'ToastService',

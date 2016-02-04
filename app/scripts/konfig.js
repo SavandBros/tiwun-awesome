@@ -21,7 +21,7 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
             views: {
                 'content': {
                     controller: 'IndexController',
-                    templateUrl: 'templates/explore.html'
+                    templateUrl: 'templates/explore.html',
                 }
             }
         })
@@ -32,7 +32,8 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                     controller: 'SearchController',
                     templateUrl: 'templates/search/search.html'
                 }
-            }
+            },
+            resolve: {$title: function() { return 'Search Posts and Tags - '; }}
         })
         .state('app.register', {
             url: '/account/register',
@@ -41,7 +42,8 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                     templateUrl: 'templates/account/register.html',
                     controller: 'RegisterController'
                 }
-            }
+            },
+            resolve: {$title: function() { return 'Register - '; }}
         })
         .state('app.login', {
             url: '/account/login/',
@@ -50,7 +52,8 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                     controller: 'LoginController',
                     templateUrl: 'templates/account/login.html'
                 }
-            }
+            },
+            resolve: {$title: function() { return 'Join Tiwun - '; }}
         })
         .state('app.userProfile', {
             url: '/users/:userSlug/:userId/',
@@ -68,7 +71,8 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                     templateUrl: 'templates/account/user_settings.html',
                     controller: 'UserSettingsController'
                 }
-            }
+            },
+            resolve: {$title: function() { return 'Settings - '; }}
         })
         .state('app.newItem', {
             url: '/items/new/',
@@ -77,7 +81,8 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                     templateUrl: 'templates/item/item_post.html',
                     controller: 'NewItemController'
                 }
-            }
+            },
+            resolve: {$title: function() { return 'New Post - '; }}
         })
         .state('app.singleItem', {
             url: '/items/:itemId/',
@@ -95,7 +100,8 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                     templateUrl: 'templates/tagool/tag_list.html',
                     controller: 'TagsController'
                 }
-            }
+            },
+            resolve: {$title: function() { return 'Popular Tags - '; }}
         })
         .state('app.tagDetail', {
             url: '/tags/:tagSlug/',
@@ -103,6 +109,46 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
                 'content': {
                     templateUrl: 'templates/tagool/tag_detail.html',
                     controller: 'TagsDetailController'
+                }
+            }
+        })
+        .state('app.editing-guide', {
+            url: '/editing-guide/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/editing-guide.html'
+                }
+            }
+        })
+        .state('app.about', {
+            url: '/about/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/about.html'
+                }
+            }
+        })
+        .state('app.terms-of-service', {
+            url: '/terms-of-service/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/tos.html'
+                }
+            }
+        })
+        .state('app.faq', {
+            url: '/faq/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/faq.html'
+                }
+            }
+        })
+        .state('app.privacy_policy', {
+            url: '/privacy-policy/',
+            views: {
+                'content': {
+                    templateUrl: 'templates/justpageit/privacy_policy.html'
                 }
             }
         });

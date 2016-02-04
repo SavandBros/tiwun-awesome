@@ -11,6 +11,7 @@
     angular.module('tiwunAwesome', [
         'ngMaterial',
         'ui.router',
+        'ui.router.title',
         'angular.filter',
         'markdown',
         'gettext',
@@ -23,7 +24,7 @@
         'tiwunAwesome.item',
         'tiwunAwesome.search',
         'tiwunAwesome.tagool',
-        'tiwunAwesome.analytics'
+        'tiwunAwesome.analytics',
     ]);
 
     angular.module('tiwunAwesome')

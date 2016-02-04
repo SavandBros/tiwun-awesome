@@ -1,0 +1,13 @@
+<a ui-sref="app.singleItem({'itemId': '{{ item.id }}'})" class="item-inner grid" title="{{ item.title }}">
+
+    <d ng-if="item.has_discount">{{ item.discount_percentage }}<span>% OFF</span></d>
+
+    <img ng-src="{{ item.get_primary_image.thumbnail || 'http://placehold.it/300x300' }}">
+
+    <p>{{ item.title }}</p>
+
+    <s ng-if="item.has_compare_price">{{ item.get_compare_at_price_display }}</s>
+
+    <span ng-if="item.has_price">{{ item.get_price_display }}</span>
+
+</a>

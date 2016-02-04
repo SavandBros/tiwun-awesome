@@ -1,12 +1,13 @@
 <!doctype html>
-<html>
+<html ng-app="tiwunAwesome">
     <head>
         <base href="/">
         <meta charset="utf-8">
-        <title></title>
+        <title ng-bind="($title) + 'Tiwun'">Tiwun</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="icon" href="images/icon.png"/>
         <!-- build:css(.) styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -17,8 +18,8 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
     </head>
-    
-    <body ng-app="tiwunAwesome">
+
+    <body>
         <div ui-view></div>
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
@@ -39,6 +40,8 @@
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/angular-aria/angular-aria.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/matchHeight/jquery.matchHeight-min.js"></script>
+        <script src="bower_components/angular-ui-router-title/angular-ui-router-title.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -79,6 +82,7 @@
         <script src="scripts/sushial/services/vote_service.js"></script>
         <script src="scripts/tagool/tagool.js"></script>
         <script src="scripts/tagool/services/tag_service.js"></script>
+        <script src="scripts/tagool/directives/tag_directive.js"></script>
         <script src="scripts/tagool/controllers/tags_controller.js"></script>
         <script src="scripts/tagool/controllers/tags_detail_controller.js"></script>
         <!-- endbuild -->

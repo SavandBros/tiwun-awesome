@@ -40,7 +40,11 @@
             </h5>
 
             <div class="tag-list" layout='row' layout-align="space-around center">
-                <tagool tag="tag" ng-repeat='tag in tags'></tagool>
+
+                <md-button class="md-raised tag-single" href="tags/{{ tag.slug }}/" ng-repeat='tag in tags'>
+                    <md-icon class='hashtag'>#</md-icon> {{ tag.slug }}
+                </md-button>
+
             </div>
         </div>
 
