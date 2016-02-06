@@ -42,6 +42,8 @@ function NewItemController($scope, $state, $log, AuthenticationService, ItemServ
                 payload.currency = item.moneyCurrency;
             }
 
+	    item.tags = item.tags.split(' ');
+
             ItemService.create(item).then(
                 function(data, status, headers, config) {
                     $state.go('app.singleItem', {
