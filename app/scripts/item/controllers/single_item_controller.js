@@ -44,7 +44,10 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
                     downVote: false
                 };
                 $scope.$broadcast('itemLoaded');
-                $scope.mainImageUrl = $scope.item.get_primary_image.standard;
+
+                // Get main image url
+                if ($scope.item.get_primary_image != undefined)
+                    $scope.mainImageUrl = $scope.item.get_primary_image.standard;
 
                 // Convert tags to use for tag directive
                 for (var i = $scope.item.tags.length - 1; i >= 0; i--) {
@@ -93,21 +96,21 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
             }
         );
 
-        if ($scope.user) {
-            // Check if user voted the item.
-            VoteService.userVotedForObject(
-                VoteService.objectTypes.item,
-                $scope.item.id,
-                $scope.user.id
-            ).then(
-                function(data, status, headers, config) {
-                    updateItemVote(data.data.votes);
-                },
-                function(data, status, headers, config) {
-                    $log.error(data.data.error);
-                }
-            );
-        }
+        // if ($scope.user) {
+        //     // Check if user voted the item.
+        //     VoteService.userVotedForObject(
+        //         VoteService.objectTypes.item,
+        //         $scope.item.id,
+        //         $scope.user.id
+        //     ).then(
+        //         function(data, status, headers, config) {
+        //             updateItemVote(data.data.votes);
+        //         },
+        //         function(data, status, headers, config) {
+        //             $log.error(data.data.error);
+        //         }
+        //     );
+        // }
 
         //$ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
     });

@@ -8,8 +8,10 @@
  * @namespace tiwunAwesome.item.controllers.NewItemController
  */
 function NewItemController($scope, $state, $log, AuthenticationService, ItemService, MoneyCurrencyService) {
+
     $scope.auth = AuthenticationService;
     $scope.moneyCurrencies = MoneyCurrencyService.currencyFormats();
+    $scope.item = {};
 
     function constructor() {
         if (!AuthenticationService.isAuthenticated()) {
@@ -26,9 +28,11 @@ function NewItemController($scope, $state, $log, AuthenticationService, ItemServ
      * @memberOf tiwunAwesome.item.controllers.NewItemController
      */
     $scope.create = function(form, item) {
+
         $scope.formSubmitted = true;
 
         if (form.$valid) {
+
             var payload = {
                 title: item.title,
                 description: item.description,
@@ -40,11 +44,11 @@ function NewItemController($scope, $state, $log, AuthenticationService, ItemServ
                 payload.max_price = item.maxPrice;
                 payload.compare_at_price = item.discountedPrice;
                 payload.currency = item.moneyCurrency;
-            }
+            };
 
-	    item.tags = item.tags.split(' ');
+            payload.tags = item.tags.split(' ');
 
-            ItemService.create(item).then(
+            ItemService.create(payload).then(
                 function(data, status, headers, config) {
                     $state.go('app.singleItem', {
                         itemId: data.data.id

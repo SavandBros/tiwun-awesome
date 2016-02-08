@@ -19,7 +19,6 @@ function ItemService($http, gettext, ENV) {
         5: gettext('Rate')
     };
 
-
     /**
      * Items
      *
@@ -63,7 +62,6 @@ function ItemService($http, gettext, ENV) {
         });
     }
 
-
     /**
      * create
      *
@@ -75,11 +73,7 @@ function ItemService($http, gettext, ENV) {
      * @memberOf tiwunAwesome.item.services.ItemService
      */
     function create(item) {
-        return $http.post(ENV.apiEndpoint + 'items/', {
-            title: item.title,
-            description: item.description,
-            tags: item.tags
-        });
+        return $http.post(ENV.apiEndpoint + 'items/', item);
     }
 
     /**
