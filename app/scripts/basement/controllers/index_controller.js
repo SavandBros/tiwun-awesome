@@ -46,8 +46,6 @@ function IndexController($scope, $state, $log, gettext, AuthenticationService, T
     }
 
     loadTags(1);
-    loadTags(2);
-    loadTags(3);
 
     // Logging
     // console.log($scope.tags);
