@@ -23,8 +23,9 @@ function SearchService($http, ENV) {
     function search(query, pageNumber) {
         return $http.get(ENV.apiEndpoint + 'search/', {
             params: {
-                q: query.text,
-                page: pageNumber
+                title: query.text,
+                page: pageNumber,
+                resource_type: ENV.resourceType.list
             }
         });
     }

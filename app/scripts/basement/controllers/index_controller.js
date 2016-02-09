@@ -14,13 +14,13 @@
  * @class IndexController
  * @namespace tiwunAwesome.basement.controllers.IndexController
  */
-function IndexController($scope, $state, $log, gettext, AuthenticationService, TagService) {
+function IndexController($scope, $state, $log, gettext, AuthenticationService, TagService, SearchService, SearchItemFactory) {
 
 
     // $scope.items = [];
     // ItemService.all(1, null, 'index/').then(
     //     function(data, status, headers, config) {
-    //         $scope.items = data.data.classifies;
+    //         $scope.items = data.data.items;
     //         $scope.pageHasNext = data.data.page_has_next;
 
     //     },
@@ -46,6 +46,77 @@ function IndexController($scope, $state, $log, gettext, AuthenticationService, T
     }
 
     loadTags(1);
+
+    // Search
+
+    var pageHasNext = true;
+    var pageNumber = 0;
+    var searchQuery = {};
+    var keywords = [];
+
+    $scope.tags = [];
+    $scope.items = [];
+    $scope.shouldSpin = false;
+
+    function constructor() {
+        TagService.all().then(
+            function(data, status, headers, config) {
+                $scope.tags = data.data.tags;
+            },
+            function(data, status, headers, config) {
+                $log.error(data.error);
+            }
+        );
+    }
+
+    /**
+     * Search all over the place!
+     *
+     * @method search
+     * @param {Object} form
+     * @memberOf tiwunAwesome.search.controllers.SearchController
+     */
+    $scope.search = function(form) {
+
+        pageNumber = 1;
+        searchQuery.text = form.query.$modelValue;
+        $scope.shouldSpin = true;
+
+        SearchService.search(searchQuery, pageNumber).then(
+            function(data, status, headers, config) {
+                $scope.items = data.data.items;
+                $scope.pageHasNext = data.data.page_has_next;
+                $scope.shouldSpin = false;
+                $scope.noResult = $scope.items.length === 0;
+            },
+            function(data, status, headers, config) {
+                $log.error("Error in search: " + data.data.error);
+            }
+        );
+    };
+
+    /**
+     * Load More
+     *
+     * @method loadMore
+     * @memberOf tiwunAwesome.search.controllers.SearchController
+     */
+    $scope.loadMoreSearch = function() {
+
+        if (!pageHasNext) return 0;
+
+        SearchService.search(searchQuery, ++pageNumber).then(
+            function(data, status, headers, config) {
+                $scope.items = $scope.items.concat(data.data.items);
+                $scope.pageHasNext = data.data.page_has_next;
+
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+            },
+            function(data, status, headers, config) {
+                $log.error("Error in search: " + data.data.error);
+            }
+        );
+    };
 
     // Logging
     // console.log($scope.tags);
@@ -104,7 +175,7 @@ function IndexController($scope, $state, $log, gettext, AuthenticationService, T
     //$scope.loadMore = function() {
     //    ItemService.all(++$scope.pageCounter, null, $scope.currentItemKind.apiPostfix).then(
     //        function(data, status, headers, config) {
-    //            $scope.items = $scope.items.concat(data.data.classifies);
+    //            $scope.items = $scope.items.concat(data.data.items);
     //            $scope.pageHasNext = data.data.page_has_next;
     //
     //            $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -219,5 +290,7 @@ IndexController.$inject = [
     '$log',
     'gettext',
     'AuthenticationService',
-    'TagService'
+    'TagService',
+    'SearchService',
+    'SearchItemFactory'
 ];
