@@ -128,11 +128,16 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
             console.log(form, comment);
             CommentService.create(1, $scope.item.id, comment.text).then(
                 function(data, status, headers, config) {
-                    $scope.item.comments = $scope.item.comments.concat(data.data);
-                    comment.text = '';
-                    //$ionicScrollDelegate.scrollBottom(true);
-                    ToastService.show(gettextCatalog.getString('Your comment has been posted successfully.'));
+                    $scope.item.comments = $scope.item.comments.concat({
+                            "comment": data.data.comment,
+                            "get_created_since": "Just now...",
+                            "user": {
+                                "name": data.data.user_name,
+                                "url": data.data.user_url,
+                            }
+                        });
 
+                    comment.text = '';
                 },
                 function(data, status, headers, config) {
                     $log.error('commenting error');
