@@ -35,6 +35,10 @@ function UserService($http, ENV) {
      * @memberOf tiwunAwesome.account.services.UserService
      */
     function update(user) {
+
+        if (typeof user.pk === "undefined")
+            user.pk = user.id;
+
         return $http.put(ENV.apiEndpoint + 'users/' + user.pk + '/', user);
     }
 

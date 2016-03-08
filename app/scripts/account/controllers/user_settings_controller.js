@@ -52,8 +52,8 @@ function UserSettingsController($scope, $state, $stateParams, $log, gettextCatal
      * @param {Object} form Submitted form contains user settings to be updated
      * @param {Object} user The user model from angular that need to be passed to `UserService` to get updated.
      */
-    $scope.updateAccount = function(form, user) {
-        UserService.update(user).then(
+    $scope.updateAccount = function(form, setting) {
+        UserService.update(setting).then(
             function(data, status, headers, config) {},
             function(data, status, headers, config) {
                 $log.error('Error in updating user account settings: ' + data.error);
