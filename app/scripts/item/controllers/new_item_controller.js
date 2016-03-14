@@ -68,7 +68,8 @@ function NewItemController($scope, $state, $log, AuthenticationService, ItemServ
      * @memberOf tiwunAwesome.item.controllers.NewItemController
      */
     $scope.cancel = function() {
-        //$ionicHistory.goBack();
+        // This should go back one state ago
+        $state.go('app.explore');
     };
 
     /**
