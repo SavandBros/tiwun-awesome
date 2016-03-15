@@ -22,7 +22,7 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
             if (tab === 'items') {
                 ItemService.items({
                     user_id: $scope.profile.id,
-                    page: 1
+                    page: 1 // TODO: Maybe default behavior?
                 }).then(
                     function(data, status, headers, config) {
                         $scope.profileItems = data.data.items;
