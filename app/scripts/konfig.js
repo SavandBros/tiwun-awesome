@@ -21,7 +21,7 @@ function Konfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProv
             views: {
                 'content': {
                     controller: 'IndexController',
-                    templateUrl: 'templates/explore.html',
+                    templateUrl: 'templates/explore.html'
                 }
             }
         })
