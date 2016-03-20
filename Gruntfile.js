@@ -456,7 +456,7 @@ module.exports = function (grunt) {
                             single: '1',
                             list: '2'
                         },
-                        apiEndpoint: 'https://127.0.0.1:8000/api/'
+                        apiEndpoint: 'http://127.0.0.1:8000/api/'
                     }
                 }
             },
@@ -468,7 +468,7 @@ module.exports = function (grunt) {
                             single: '1',
                             list: '2'
                         },
-                        apiEndpoint: 'https://www.tiwun.com/api/'
+                        apiEndpoint: 'http://www.tiwun.com/api/'
                     }
                 }
             }
