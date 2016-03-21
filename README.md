@@ -1,6 +1,9 @@
 Tiwun Awesome
 =============
 
+[![Dependency Status](https://gemnasium.com/SavandBros/tiwun-awesome.svg)](https://gemnasium.com/SavandBros/tiwun-awesome)
+
+
 [Tiwun.com](https://www.tiwun.com) Awesome frontend Application implemented in [AngularJS](https://angularjs.org/) and other billion technologies.
 
 Under heavy destruction!
