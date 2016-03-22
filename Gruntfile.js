@@ -469,11 +469,11 @@ module.exports = function (grunt) {
                             single: '1',
                             list: '2'
                         },
-                        apiEndpoint: 'http://www.tiwun.com/api/'
+                        apiEndpoint: 'https://www.tiwun.com/api/'
                     }
                 }
             }
-        },
+        }
     });
 
 
