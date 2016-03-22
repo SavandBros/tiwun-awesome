@@ -9,9 +9,10 @@
 
 module.exports = function (grunt) {
 
+    require('load-grunt-tasks')(grunt);
+
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
-
     // Automatically load required Grunt tasks
     require('jit-grunt')(grunt, {
         useminPrepare: 'grunt-usemin',
@@ -20,6 +21,7 @@ module.exports = function (grunt) {
     });
     var modRewrite = require('connect-modrewrite');
     var serveStatic = require('serve-static');
+
 
     grunt.loadNpmTasks('grunt-ng-constant');
 
@@ -389,7 +391,8 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '*.html',
                         'images/{,*/}*.{webp}',
-                        'styles/fonts/{,*/}*.*'
+                        'styles/fonts/{,*/}*.*',
+                        'fonts/{,*/}*.*'
                     ]
                 }, {
                     expand: true,
