@@ -8,6 +8,7 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+    process.env['QT_QPA_PLATFORM'] = '';
 
     require('load-grunt-tasks')(grunt);
 
