@@ -473,7 +473,7 @@ module.exports = function (grunt) {
                             single: '1',
                             list: '2'
                         },
-                        apiEndpoint: 'https://www.tiwun.com/api/'
+			apiEndpoint: 'http://api.tiwun.com/api/'
                     }
                 }
             }
