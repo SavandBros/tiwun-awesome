@@ -20,7 +20,8 @@ function RegisterController($window, $state, $rootScope, $scope, $log, Authentic
     function constructor() {
         // if the user is authenticated, they should not be here.
         if (AuthenticationService.isAuthenticated()) {
-            //$ionicHistory.goBack();
+            // TODO: Fix to redirect to previous state.
+            $state.go('app.explore');
         }
     }
 

@@ -64,10 +64,19 @@ function UserSettingsController($scope, $state, $stateParams, $log, gettextCatal
 
 
 angular.module('tiwunAwesome.account.controllers.UserSettingsController', [
-        'tiwunAwesome.account.services.UserService',
-        'tiwunAwesome.account.services.AuthenticationService',
-        'tiwunAwesome.basement.services.ToastService'
-    ])
+    'tiwunAwesome.account.services.UserService',
+    'tiwunAwesome.account.services.AuthenticationService',
+    'tiwunAwesome.basement.services.ToastService'
+])
     .controller('UserSettingsController', UserSettingsController);
 
-UserSettingsController.$inject = ['$scope', '$state', '$stateParams', '$log', 'gettextCatalog', 'ToastService', 'UserService', 'AuthenticationService'];
+UserSettingsController.$inject = [
+    '$scope',
+    '$state',
+    '$stateParams',
+    '$log',
+    'gettextCatalog',
+    'ToastService',
+    'UserService',
+    'AuthenticationService'
+];

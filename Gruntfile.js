@@ -8,10 +8,12 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+    process.env['QT_QPA_PLATFORM'] = '';
+
+    require('load-grunt-tasks')(grunt);
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
-
     // Automatically load required Grunt tasks
     require('jit-grunt')(grunt, {
         useminPrepare: 'grunt-usemin',
@@ -19,6 +21,8 @@ module.exports = function (grunt) {
         cdnify: 'grunt-google-cdn'
     });
     var modRewrite = require('connect-modrewrite');
+    var serveStatic = require('serve-static');
+
 
     grunt.loadNpmTasks('grunt-ng-constant');
 
@@ -88,16 +92,16 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.woff|\\.ttf$ /index.html [L]']),
-                            connect.static('.tmp'),
+                            serveStatic('.tmp'),
                             connect().use(
                                 '/bower_components',
-                                connect.static('./bower_components')
+                                serveStatic('./bower_components')
                             ),
                             connect().use(
                                 '/app/styles',
-                                connect.static('./app/styles')
+                                serveStatic('./app/styles')
                             ),
-                            connect.static(appConfig.app)
+                            serveStatic(appConfig.app)
                         ];
                     }
                 }
@@ -107,13 +111,13 @@ module.exports = function (grunt) {
                     port: 9001,
                     middleware: function (connect) {
                         return [
-                            connect.static('.tmp'),
-                            connect.static('test'),
+                            serveStatic('.tmp'),
+                            serveStatic('test'),
                             connect().use(
                                 '/bower_components',
-                                connect.static('./bower_components')
+                                serveStatic('./bower_components')
                             ),
-                            connect.static(appConfig.app)
+                            serveStatic(appConfig.app)
                         ];
                     }
                 }
@@ -388,7 +392,8 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '*.html',
                         'images/{,*/}*.{webp}',
-                        'styles/fonts/{,*/}*.*'
+                        'styles/fonts/{,*/}*.*',
+                        'fonts/{,*/}*.*'
                     ]
                 }, {
                     expand: true,
@@ -456,7 +461,7 @@ module.exports = function (grunt) {
                             single: '1',
                             list: '2'
                         },
-                        apiEndpoint: 'https://127.0.0.1:8000/api/'
+                        apiEndpoint: 'http://127.0.0.1:8000/api/'
                     }
                 }
             },
@@ -468,11 +473,11 @@ module.exports = function (grunt) {
                             single: '1',
                             list: '2'
                         },
-                        apiEndpoint: 'https://www.tiwun.com/api/'
+			apiEndpoint: 'http://api.tiwun.com/api/'
                     }
                 }
             }
-        },
+        }
     });
 
 

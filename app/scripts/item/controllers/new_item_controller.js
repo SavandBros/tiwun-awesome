@@ -44,7 +44,7 @@ function NewItemController($scope, $state, $log, AuthenticationService, ItemServ
                 payload.max_price = item.maxPrice;
                 payload.compare_at_price = item.discountedPrice;
                 payload.currency = item.moneyCurrency;
-            };
+            }
 
             payload.tags = item.tags.split(' ');
 
@@ -68,7 +68,8 @@ function NewItemController($scope, $state, $log, AuthenticationService, ItemServ
      * @memberOf tiwunAwesome.item.controllers.NewItemController
      */
     $scope.cancel = function() {
-        //$ionicHistory.goBack();
+        // This should go back one state ago
+        $state.go('app.explore');
     };
 
     /**
