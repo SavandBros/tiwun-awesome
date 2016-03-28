@@ -27,6 +27,8 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
     $scope.isEditing = false;
     $scope.mainImageUrl = "";
 
+    $scope.itemLoaded = true;
+
     /**
      * Actions to be performed when this controller is instantiated.
      *
@@ -43,6 +45,8 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
                     upVote: false,
                     downVote: false
                 };
+
+                $scope.itemLoaded = true;
                 $scope.$broadcast('itemLoaded');
 
                 // Get main image url
@@ -55,13 +59,13 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
                 };
             },
             function(data, status, headers, config) {
-                $log.error('Error on receiving item');
-                $log.error(data.error);
+                $scope.itemLoaded = false;
             }
         );
     }
 
     constructor();
+
 
     /**
      * Update item's vote on the frontend.
@@ -95,6 +99,7 @@ function SingleItemController($scope, $stateParams, $state, $sanitize,
                 $log.error(data.error);
             }
         );
+
 
         // if ($scope.user) {
         //     // Check if user voted the item.
