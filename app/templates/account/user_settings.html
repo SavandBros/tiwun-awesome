@@ -1,4 +1,4 @@
-<div ng-controller="UserSettingsController" class="container" ng-clock>
+<div class="container" ng-clock>
 
     <div class="container-page container-eee col-lg-8 col-md-10 col-lg-offset-2 col-md-offset-1">
 
@@ -15,31 +15,31 @@
             <form name="form" ng-submit="updateAccount(form, setting)">
 
                 <!-- Username -->
-                <md-input-container>
+                <md-input-container class="full">
                     <label>Name</label>
                     <input ng-model="setting.name" value="{{ setting.name }}">
                 </md-input-container>
 
                 <!-- Real name -->
-                <md-input-container>
+                <md-input-container class="full">
                     <label>Real Name</label>
                     <input ng-model="setting.real_name" value="{{ setting.real_name }}">
                 </md-input-container>
 
                 <!-- Website -->
-                <md-input-container>
+                <md-input-container class="full">
                     <label>Website</label>
                     <input ng-model="setting.website" value="{{ setting.website }}">
                 </md-input-container>
 
                 <!-- Location -->
-                <md-input-container>
+                <md-input-container class="full">
                     <label>Location</label>
                     <input ng-model="setting.location" value="{{ setting.location }}">
                 </md-input-container>
 
                 <!-- About -->
-                <md-input-container>
+                <md-input-container class="full">
                     <label>About</label>
                     <textarea ng-model="setting.about" rows="5">{{ setting.about }}</textarea>
                 </md-input-container>
