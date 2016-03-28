@@ -18,7 +18,7 @@
 
         <div class="col-xs-12">
 
-            <md-button ui-sref="app.userProfile({'userId': '{{ user.id }}', 'userSlug': '{{ user.slug }}'})" class="md-flat md-mini md-warn">
+            <md-button ui-sref="app.userProfile({userId: item.user_id, userSlug: item.user_name})" class="md-flat md-mini md-warn">
                 <md-icon class='mi'>account_box</md-icon> {{ item.user_name }}
             </md-button>
 
