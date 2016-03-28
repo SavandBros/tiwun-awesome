@@ -1,4 +1,4 @@
-<div ng-controller="UserProfileController" class="container container-page container-eee" ng-clock>
+<div class="container container-page container-eee" ng-show="dataLoaded" ng-clock>
 
     <md-content class='profile-container'>
 
@@ -37,7 +37,7 @@
 
         <br><br><br>
 
-        <div class="container container-page container-eee">
+        <div class="container container-page container-eee" ng-show="dataLoaded">
             <md-tabs md-dynamic-height class="profile tabs">
                 <md-tab label="Items" ng-click="activateTab('items')">
                     <md-content class="md-padding">
@@ -76,4 +76,10 @@
             </md-tabs>
         </div>
     </md-content>
+</div>
+
+<div ng-show="!dataLoaded" class="row">
+    <div class="alert alert-danger text-center col-md-8 col-md-offset-2">
+        <h3><b>Oh...</b> Item doesn't exist or it has been deleted.</h3>
+    </div>
 </div>

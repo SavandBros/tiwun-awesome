@@ -22,6 +22,8 @@
         $scope.tagName = $stateParams.tagSlug;
         $scope.loading = true;
 
+        $scope.dataLoaded = true;
+
         /**
          * @name loadMore
          */
@@ -35,9 +37,12 @@
                     $scope.pageHasNext = data.data.page_has_next;
                     $scope.$broadcast('scroll.infiniteScrollComplete');
                     $scope.loading = false;
+
+                    $scope.dataLoaded = true;
                 },
                 function(data, status, headers, config) {
-                    $log.error(data.error);
+
+                    $scope.dataLoaded = false;
                 }
             );
             $('.grid').matchHeight();

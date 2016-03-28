@@ -13,6 +13,8 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
     $scope.pageCounter = 0;
     $scope.currentTab = '';
 
+    $scope.dataLoaded = true;
+
     $scope.activateTab = function(tab) {
 
         if (tab != $scope.currentTab) {
@@ -99,9 +101,11 @@ function UserProfileController($scope, $stateParams, $log, UserService, ItemServ
             function(data, status, headers, config) {
                 $scope.profile = data.data.user;
                 $scope.activateTab('items');
+
+                $scope.dataLoaded = true;
             },
             function(data, status, headers, config) {
-                $log.error('Error in getting user: ' + data.error);
+                $scope.dataLoaded = false;
             }
         );
     }
